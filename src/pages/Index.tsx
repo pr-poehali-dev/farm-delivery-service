@@ -25,15 +25,15 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 45, image: '🥔' },
-  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 47, image: '🥔' },
-  { id: '3', name: 'Картофель "Гала Бэби"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 50, image: '🥔' },
-  { id: '4', name: 'Картофель "Ла Страда"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 48, image: '🥔' },
-  { id: '12', name: 'Картофель "Королева Анна"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 52, image: '🥔' },
-  { id: '5', name: 'Морковь', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 35, image: '🥕' },
-  { id: '6', name: 'Лук репчатый', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 30, image: '🧅' },
-  { id: '7', name: 'Свекла', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 32, image: '🥬' },
-  { id: '8', name: 'Капуста белокочанная', category: 'Овощи', weights: [2, 3, 5], pricePerKg: 28, image: '🥬' },
+  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 45, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
+  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 47, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
+  { id: '3', name: 'Картофель "Гала Бэби"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 50, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
+  { id: '4', name: 'Картофель "Ла Страда"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 48, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
+  { id: '12', name: 'Картофель "Королева Анна"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 52, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
+  { id: '5', name: 'Морковь', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 35, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/b93481ec-e369-4562-955b-45910a54b7e7.jpg' },
+  { id: '6', name: 'Лук репчатый', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 30, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/4257b766-fb20-43e0-b5d7-5db9f7c7819d.jpg' },
+  { id: '7', name: 'Свекла', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 32, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/4257b766-fb20-43e0-b5d7-5db9f7c7819d.jpg' },
+  { id: '8', name: 'Капуста белокочанная', category: 'Овощи', weights: [2, 3, 5], pricePerKg: 28, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/4257b766-fb20-43e0-b5d7-5db9f7c7819d.jpg' },
   { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [1, 2, 3], pricePerKg: 120, image: '🥗' },
   { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1, 2, 3], pricePerKg: 180, image: '🥒' },
   { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5, 1], pricePerKg: 250, image: '🌶️' },
@@ -123,7 +123,13 @@ export default function Index() {
                   <>
                     {cart.map((item, index) => (
                       <div key={`${item.product.id}-${item.weight}-${index}`} className="flex items-center gap-4 p-4 bg-accent rounded-lg">
-                        <span className="text-4xl">{item.product.image}</span>
+                        <div className="w-16 h-16 flex items-center justify-center overflow-hidden rounded-lg bg-white">
+                          {item.product.image.startsWith('http') ? (
+                            <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <span className="text-3xl">{item.product.image}</span>
+                          )}
+                        </div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-sm">{item.product.name}</h4>
                           <p className="text-sm text-muted-foreground">{item.weight} кг × {item.product.pricePerKg} ₽</p>
@@ -221,7 +227,13 @@ export default function Index() {
               {products.map((product) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow animate-scale-in">
                   <CardContent className="p-6">
-                    <div className="text-6xl mb-4 text-center">{product.image}</div>
+                    <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent">
+                      {product.image.startsWith('http') ? (
+                        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <span className="text-6xl">{product.image}</span>
+                      )}
+                    </div>
                     <h3 className="font-bold text-lg mb-2">{product.name}</h3>
                     <Badge variant="secondary" className="mb-3">{product.category}</Badge>
                     <p className="text-2xl font-bold text-primary mb-4">{product.pricePerKg} ₽/кг</p>
