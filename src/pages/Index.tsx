@@ -25,10 +25,11 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '1', name: 'Картофель "Гала"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 45, image: '🥔' },
-  { id: '2', name: 'Картофель "Невский"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 40, image: '🥔' },
-  { id: '3', name: 'Картофель "Ред Скарлет"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 50, image: '🥔' },
-  { id: '4', name: 'Картофель "Адретта"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 48, image: '🥔' },
+  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 45, image: '🥔' },
+  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 47, image: '🥔' },
+  { id: '3', name: 'Картофель "Гала Бэби"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 50, image: '🥔' },
+  { id: '4', name: 'Картофель "Ла Страда"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 48, image: '🥔' },
+  { id: '12', name: 'Картофель "Королева Анна"', category: 'Картофель', weights: [3, 5, 10, 15], pricePerKg: 52, image: '🥔' },
   { id: '5', name: 'Морковь', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 35, image: '🥕' },
   { id: '6', name: 'Лук репчатый', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 30, image: '🧅' },
   { id: '7', name: 'Свекла', category: 'Овощи', weights: [2, 3, 5, 10], pricePerKg: 32, image: '🥬' },
@@ -91,7 +92,7 @@ export default function Index() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-3xl">🌾</span>
-            <h1 className="text-2xl font-bold text-primary">ФермаДом</h1>
+            <h1 className="text-2xl font-bold text-primary">ФермаВДК</h1>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <button onClick={() => scrollToSection('home')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'home' ? 'text-primary' : 'text-foreground'}`}>Главная</button>
@@ -260,7 +261,7 @@ export default function Index() {
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-primary">О нас</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Мы — семейная ферма с 15-летним опытом выращивания экологически чистых овощей. 
+                Мы — семейная ферма с 11-летним опытом выращивания и доставки экологически чистых овощей нашим клиентам. 
                 Наши поля расположены в экологически чистом районе, вдали от промышленных предприятий.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
@@ -270,7 +271,7 @@ export default function Index() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div className="p-6 bg-white rounded-lg">
                   <div className="text-4xl mb-3">🏆</div>
-                  <h3 className="font-bold mb-2">15 лет опыта</h3>
+                  <h3 className="font-bold mb-2">11 лет опыта</h3>
                   <p className="text-sm text-muted-foreground">Знаем всё о выращивании качественных овощей</p>
                 </div>
                 <div className="p-6 bg-white rounded-lg">
@@ -379,10 +380,10 @@ export default function Index() {
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-3xl">🌾</span>
-            <h3 className="text-2xl font-bold">ФермаДом</h3>
+            <h3 className="text-2xl font-bold">ФермаВДК</h3>
           </div>
           <p className="text-sm opacity-90">
-            © 2024 ФермаДом. Свежие овощи от фермера.
+            © 2024 ФермаВДК. Свежие овощи от фермера.
           </p>
         </div>
       </footer>
