@@ -31,10 +31,11 @@ const products: Product[] = [
   { id: '13', name: 'Сборная сетка: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
   { id: '14', name: 'Сборная сетка: Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
   { id: '15', name: 'Сборная сетка: Морковь + Лук', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
-  { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], pricePerKg: 130, image: '🛢️' },
-  { id: '8', name: 'Капуста Сибирь', category: 'Овощи', weights: [20], pricePerKg: 65, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/0364c454-8ecb-4a17-b38c-071178b6819b.jpg' },
-  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: '🥗' },
-  { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5], pricePerKg: 600, image: '🌶️' },
+  { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], pricePerKg: 130, image: 'https://cdn.poehali.dev/files/1001628999.jpg' },
+  { id: '8', name: 'Капуста Сибирь', category: 'Овощи', weights: [20], pricePerKg: 65, image: 'https://cdn.poehali.dev/files/1002646994.jpg' },
+  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: 'https://cdn.poehali.dev/files/1002520711.jpg' },
+  { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1.5], pricePerKg: 333, image: 'https://cdn.poehali.dev/files/1002520708.jpg' },
+  { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5], pricePerKg: 600, image: 'https://cdn.poehali.dev/files/1000101387.jpg' },
 ];
 
 export default function Index() {
