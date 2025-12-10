@@ -25,7 +25,7 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/files/1002893931.jpg' },
+  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/files/1000000688.jpg' },
   { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 42, image: 'https://cdn.poehali.dev/files/1002862244.jpg' },
   { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg' },
   { id: '13', name: 'Сборная сетка: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
