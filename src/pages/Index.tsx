@@ -207,7 +207,7 @@ export default function Index() {
                 </div>
                 <div className="text-center">
                   <div className="text-4xl mb-2">🚚</div>
-                  <p className="text-sm font-medium">Бесплатная доставка</p>
+                  <p className="text-sm font-medium">Бесплатная доставка от 20кг</p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl mb-2">⚡</div>
@@ -304,15 +304,18 @@ export default function Index() {
             <div className="max-w-3xl mx-auto">
               <h2 className="text-4xl font-bold text-center mb-12 text-primary">Доставка</h2>
               <div className="space-y-6">
-                <Card>
+                <Card className="border-2 border-primary">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="text-4xl">🚚</div>
                       <div>
-                        <h3 className="font-bold text-lg mb-2">Бесплатная доставка</h3>
-                        <p className="text-muted-foreground">
-                          Доставляем заказы бесплатно прямо в вашу квартиру. Наши курьеры поднимут 
-                          покупки на любой этаж.
+                        <h3 className="font-bold text-lg mb-2">Бесплатная доставка от 20 кг</h3>
+                        <p className="text-muted-foreground mb-2">
+                          При заказе от 20 кг доставляем бесплатно прямо в вашу квартиру. 
+                          Наши курьеры поднимут покупки на любой этаж.
+                        </p>
+                        <p className="text-sm font-medium text-primary">
+                          📞 Звоните: 8-902-555-35-58
                         </p>
                       </div>
                     </div>
