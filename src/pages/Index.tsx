@@ -326,34 +326,50 @@ export default function Index() {
                     <div className="flex items-start gap-4">
                       <div className="text-4xl">📍</div>
                       <div>
-                        <h3 className="font-bold text-lg mb-2">Районы доставки</h3>
+                        <h3 className="font-bold text-lg mb-2">География доставки</h3>
                         <p className="text-muted-foreground mb-3">
-                          Доставляем по всему городу:
+                          Доставляем по Владивостоку и Приморскому краю:
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
                           <div className="flex items-center gap-2">
                             <span className="text-primary">✓</span>
-                            <span>Центральный район</span>
+                            <span>Владивосток</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="text-primary">✓</span>
-                            <span>Северный район</span>
+                            <span>Артём</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="text-primary">✓</span>
-                            <span>Южный район</span>
+                            <span>Надеждинск</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="text-primary">✓</span>
-                            <span>Восточный район</span>
+                            <span>Де-Фриз</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="text-primary">✓</span>
-                            <span>Западный район</span>
+                            <span>о. Русский</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="text-primary">✓</span>
-                            <span>Пригород</span>
+                            <span>Большой Камень</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Фокино</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>п. Новый</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Раздольное</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Кипарисово</span>
                           </div>
                         </div>
                         <p className="text-xs text-muted-foreground mt-3">
