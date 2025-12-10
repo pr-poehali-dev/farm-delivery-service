@@ -324,12 +324,40 @@ export default function Index() {
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="text-4xl">⏰</div>
+                      <div className="text-4xl">📍</div>
                       <div>
-                        <h3 className="font-bold text-lg mb-2">Удобное время</h3>
-                        <p className="text-muted-foreground">
-                          Выберите удобное время доставки при оформлении заказа. Работаем с 9:00 до 21:00 
-                          без выходных.
+                        <h3 className="font-bold text-lg mb-2">Районы доставки</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Доставляем по всему городу:
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Центральный район</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Северный район</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Южный район</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Восточный район</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Западный район</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Пригород</span>
+                          </div>
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-3">
+                          Уточните возможность доставки по телефону: 8-902-555-35-58
                         </p>
                       </div>
                     </div>
@@ -338,12 +366,12 @@ export default function Index() {
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="text-4xl">📦</div>
+                      <div className="text-4xl">⏰</div>
                       <div>
-                        <h3 className="font-bold text-lg mb-2">Удобная упаковка</h3>
+                        <h3 className="font-bold text-lg mb-2">Удобное время</h3>
                         <p className="text-muted-foreground">
-                          Все овощи упакованы в прочные сетки, которые легко переносить и хранить. 
-                          Заготовки — в герметичной таре.
+                          Доставляем в любое удобное для вас время. Работаем без выходных.
+                          Звоните и согласуем удобное время!
                         </p>
                       </div>
                     </div>
