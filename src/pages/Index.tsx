@@ -25,11 +25,11 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 45, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
-  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 47, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
-  { id: '3', name: 'Картофель "Гала Бэби"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
-  { id: '4', name: 'Картофель "Ла Страда"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 48, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
-  { id: '12', name: 'Картофель "Королева Анна"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 52, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/cee08871-7541-4619-a652-078ad73063d8.jpg' },
+  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 45, image: 'https://cdn.poehali.dev/files/1002893931.jpg' },
+  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 47, image: 'https://cdn.poehali.dev/files/1002893926.jpg' },
+  { id: '3', name: 'Картофель "Гала Бэби"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/files/1002893930.jpg' },
+  { id: '4', name: 'Картофель "Ла Страда"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 48, image: 'https://cdn.poehali.dev/files/1002893929.jpg' },
+  { id: '12', name: 'Картофель "Королева Анна"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 52, image: 'https://cdn.poehali.dev/files/1002893928.jpg' },
   { id: '5', name: 'Морковь', category: 'Овощи', weights: [10], pricePerKg: 35, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/b93481ec-e369-4562-955b-45910a54b7e7.jpg' },
   { id: '6', name: 'Лук репчатый', category: 'Овощи', weights: [10], pricePerKg: 30, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/4257b766-fb20-43e0-b5d7-5db9f7c7819d.jpg' },
   { id: '7', name: 'Свекла', category: 'Овощи', weights: [10], pricePerKg: 32, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/4257b766-fb20-43e0-b5d7-5db9f7c7819d.jpg' },
