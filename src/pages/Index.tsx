@@ -25,21 +25,16 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 45, image: 'https://cdn.poehali.dev/files/1002893931.jpg' },
-  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 47, image: 'https://cdn.poehali.dev/files/1002893926.jpg' },
-  { id: '3', name: 'Картофель "Гала Бэби"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/files/1002893930.jpg' },
-  { id: '4', name: 'Картофель "Ла Страда"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 48, image: 'https://cdn.poehali.dev/files/1002893929.jpg' },
-  { id: '12', name: 'Картофель "Королева Анна"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 52, image: 'https://cdn.poehali.dev/files/1002893928.jpg' },
-  { id: '5', name: 'Морковь', category: 'Овощи', weights: [10], pricePerKg: 35, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/ebe71bcd-209f-491d-ae01-e3fc3013665e.jpg' },
-  { id: '6', name: 'Лук репчатый', category: 'Овощи', weights: [10], pricePerKg: 30, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/8cc97939-e988-4ed7-920b-624dcce75abc.jpg' },
-  { id: '7', name: 'Свекла', category: 'Овощи', weights: [10], pricePerKg: 32, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/7606d3b4-de2f-4898-bfd5-5e940860f9cb.jpg' },
-  { id: '13', name: 'Сборная сетка: Морковь + Лук', category: 'Сборные сетки', weights: [10], pricePerKg: 33, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
-  { id: '14', name: 'Сборная сетка: Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 34, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
-  { id: '15', name: 'Сборная сетка: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 32, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
-  { id: '8', name: 'Капуста белокочанная', category: 'Овощи', weights: [2, 3, 5], pricePerKg: 28, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/0364c454-8ecb-4a17-b38c-071178b6819b.jpg' },
-  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [1, 2, 3], pricePerKg: 120, image: '🥗' },
-  { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1, 2, 3], pricePerKg: 180, image: '🥒' },
-  { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5, 1], pricePerKg: 250, image: '🌶️' },
+  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/files/1002893931.jpg' },
+  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 42, image: 'https://cdn.poehali.dev/files/1002893926.jpg' },
+  { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002893928.jpg' },
+  { id: '13', name: 'Сборная сетка: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
+  { id: '14', name: 'Сборная сетка: Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
+  { id: '15', name: 'Сборная сетка: Морковь + Лук', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/f34f11f3-55bf-4586-b329-6dcddf8356ee.jpg' },
+  { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], pricePerKg: 130, image: '🛢️' },
+  { id: '8', name: 'Капуста Сибирь', category: 'Овощи', weights: [20], pricePerKg: 65, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/0364c454-8ecb-4a17-b38c-071178b6819b.jpg' },
+  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: '🥗' },
+  { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5], pricePerKg: 600, image: '🌶️' },
 ];
 
 export default function Index() {
