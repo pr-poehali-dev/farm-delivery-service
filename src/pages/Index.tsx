@@ -263,7 +263,36 @@ export default function Index() {
                   Узнать больше
                 </Button>
               </div>
-              <div className="mt-12 flex flex-wrap justify-center gap-8">
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center max-w-2xl mx-auto">
+                <a 
+                  href="https://chat.whatsapp.com/KUNWRMPsweQ7K6YIOj7TTL?mode=wwt" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-lg hover:bg-[#22c55e] transition-colors text-sm font-medium"
+                >
+                  <Icon name="MessageCircle" size={18} />
+                  <span>Группа WhatsApp</span>
+                </a>
+                <a 
+                  href="https://max.ru/join/A0Im7QSZxCi4-ehXt_uTDyD12VSnqUwiYonh_uM3KJI" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-colors text-sm font-medium"
+                >
+                  <Icon name="MessageSquare" size={18} />
+                  <span>Чат MAX</span>
+                </a>
+                <a 
+                  href="https://t.me/FermaVladivostok" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-2 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b5] transition-colors text-sm font-medium"
+                >
+                  <Icon name="Send" size={18} />
+                  <span>Канал Telegram</span>
+                </a>
+              </div>
+              <div className="mt-8 flex flex-wrap justify-center gap-8">
                 <div className="text-center">
                   <div className="text-4xl mb-2">🌱</div>
                   <p className="text-sm font-medium">100% натурально</p>
