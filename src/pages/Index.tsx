@@ -482,33 +482,33 @@ export default function Index() {
                   </div>
                   <div className="pt-6 border-t mt-6">
                     <p className="text-muted-foreground mb-6">Работаем ежедневно с 9:00 до 19:00</p>
-                    <div className="flex justify-center gap-4">
+                    <div className="flex flex-col gap-3">
                       <a 
-                        href="https://wa.me/79025553558" 
+                        href="https://chat.whatsapp.com/KUNWRMPsweQ7K6YIOj7TTL?mode=wwt" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#22c55e] transition-colors"
+                        className="flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#22c55e] transition-colors"
                       >
                         <Icon name="MessageCircle" size={20} />
-                        <span className="font-semibold">WhatsApp</span>
+                        <span className="font-semibold">Группа WhatsApp</span>
                       </a>
                       <a 
-                        href="https://t.me/+79025553558" 
+                        href="https://max.ru/join/A0Im7QSZxCi4-ehXt_uTDyD12VSnqUwiYonh_uM3KJI" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b5] transition-colors"
-                      >
-                        <Icon name="Send" size={20} />
-                        <span className="font-semibold">Telegram</span>
-                      </a>
-                      <a 
-                        href="https://vk.com/im" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-[#0077FF] text-white rounded-lg hover:bg-[#0066dd] transition-colors"
+                        className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-colors"
                       >
                         <Icon name="MessageSquare" size={20} />
-                        <span className="font-semibold">ВКонтакте</span>
+                        <span className="font-semibold">Чат MAX</span>
+                      </a>
+                      <a 
+                        href="https://t.me/FermaVladivostok" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 px-6 py-3 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b5] transition-colors"
+                      >
+                        <Icon name="Send" size={20} />
+                        <span className="font-semibold">Канал Telegram</span>
                       </a>
                     </div>
                   </div>
