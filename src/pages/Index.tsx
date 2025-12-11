@@ -267,8 +267,11 @@ export default function Index() {
                   <Icon name="ShoppingBag" size={20} className="mr-2" />
                   Смотреть каталог
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => scrollToSection('about')} className="text-lg">
-                  Узнать больше
+                <Button size="lg" variant="outline" asChild className="text-lg">
+                  <a href="tel:+79025553558">
+                    <Icon name="Phone" size={20} className="mr-2" />
+                    Позвонить
+                  </a>
                 </Button>
               </div>
               <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center max-w-2xl mx-auto">
