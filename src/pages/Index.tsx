@@ -102,7 +102,6 @@ export default function Index() {
             <button onClick={() => scrollToSection('catalog')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'catalog' ? 'text-primary' : 'text-foreground'}`}>Каталог</button>
             <button onClick={() => scrollToSection('about')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'about' ? 'text-primary' : 'text-foreground'}`}>О нас</button>
             <button onClick={() => scrollToSection('delivery')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'delivery' ? 'text-primary' : 'text-foreground'}`}>Доставка</button>
-            <button onClick={() => scrollToSection('blog')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'blog' ? 'text-primary' : 'text-foreground'}`}>Блог</button>
             <button onClick={() => scrollToSection('contacts')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'contacts' ? 'text-primary' : 'text-foreground'}`}>Контакты</button>
             <div className="flex items-center gap-2 ml-2">
               <a href="https://wa.me/79025553558" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#25D366] text-white hover:bg-[#22c55e] transition-colors">
@@ -411,59 +410,6 @@ export default function Index() {
                   </CardContent>
                 </Card>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="blog" className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-primary">Блог</h2>
-              <p className="text-muted-foreground text-lg">Полезные статьи и советы о хранении овощей</p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                  <span className="text-6xl">🥔</span>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-xl mb-3">Как правильно хранить картофель</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Рассказываем о секретах долгого хранения картофеля: оптимальная температура, влажность и условия.
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    Читать далее
-                  </Button>
-                </CardContent>
-              </Card>
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                  <span className="text-6xl">🥕</span>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-xl mb-3">Польза домашних заготовок</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Почему квашеная капуста и бочковые огурцы полезнее магазинных консервов.
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    Читать далее
-                  </Button>
-                </CardContent>
-              </Card>
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                  <span className="text-6xl">🌾</span>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-xl mb-3">Сезон сбора урожая 2024</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Делимся опытом: как мы собираем и отбираем овощи для наших покупателей.
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    Читать далее
-                  </Button>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </section>
