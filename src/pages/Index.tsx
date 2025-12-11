@@ -323,8 +323,8 @@ export default function Index() {
             <h2 className="text-4xl font-bold text-center mb-12 text-primary">Наш ассортимент</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.map((product) => (
-                <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow animate-scale-in">
-                  <CardContent className="p-6">
+                <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col">
+                  <CardContent className="p-6 flex-1 flex flex-col">
                     <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent">
                       {product.image.startsWith('http') ? (
                         <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
@@ -335,9 +335,9 @@ export default function Index() {
                     <h3 className="font-bold text-lg mb-2">{product.name}</h3>
                     <Badge variant="secondary" className="mb-3">{product.category}</Badge>
                     {product.description && (
-                      <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{product.description}</p>
+                      <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-1">{product.description}</p>
                     )}
-                    <div className="space-y-3">
+                    <div className="space-y-3 mt-auto">
                       <div>
                         <Label className="text-xs text-muted-foreground">Выберите вес</Label>
                         <div className="flex flex-wrap gap-2 mt-2">
