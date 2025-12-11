@@ -110,9 +110,6 @@ export default function Index() {
               <a href="https://t.me/+79025553558" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#0088cc] text-white hover:bg-[#0077b5] transition-colors">
                 <Icon name="Send" size={18} />
               </a>
-              <a href="https://vk.com/im" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#0077FF] text-white hover:bg-[#0066dd] transition-colors">
-                <Icon name="MessageSquare" size={18} />
-              </a>
             </div>
           </nav>
           <Sheet>
