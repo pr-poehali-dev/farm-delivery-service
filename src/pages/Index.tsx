@@ -410,25 +410,45 @@ export default function Index() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-center gap-3">
                     <Icon name="Phone" size={24} className="text-primary" />
-                    <a href="tel:+79991234567" className="text-xl font-semibold hover:text-primary transition-colors">
-                      +7 (999) 123-45-67
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-center gap-3">
-                    <Icon name="Mail" size={24} className="text-primary" />
-                    <a href="mailto:info@fermadom.ru" className="text-xl font-semibold hover:text-primary transition-colors">
-                      info@fermadom.ru
+                    <a href="tel:+79025553558" className="text-xl font-semibold hover:text-primary transition-colors">
+                      8-902-555-35-58
                     </a>
                   </div>
                   <div className="flex items-center justify-center gap-3">
                     <Icon name="MapPin" size={24} className="text-primary" />
-                    <p className="text-xl font-semibold">Московская область</p>
+                    <p className="text-xl font-semibold">Приморский край, п. Заводской</p>
                   </div>
                   <div className="pt-6 border-t mt-6">
-                    <p className="text-muted-foreground mb-4">Работаем ежедневно с 9:00 до 21:00</p>
-                    <p className="text-sm text-muted-foreground">
-                      Принимаем заказы по телефону, через WhatsApp и на сайте
-                    </p>
+                    <p className="text-muted-foreground mb-6">Работаем ежедневно с 9:00 до 21:00</p>
+                    <div className="flex justify-center gap-4">
+                      <a 
+                        href="https://wa.me/79025553558" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#22c55e] transition-colors"
+                      >
+                        <Icon name="MessageCircle" size={20} />
+                        <span className="font-semibold">WhatsApp</span>
+                      </a>
+                      <a 
+                        href="https://t.me/+79025553558" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b5] transition-colors"
+                      >
+                        <Icon name="Send" size={20} />
+                        <span className="font-semibold">Telegram</span>
+                      </a>
+                      <a 
+                        href="https://vk.com/im" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 bg-[#0077FF] text-white rounded-lg hover:bg-[#0066dd] transition-colors"
+                      >
+                        <Icon name="MessageSquare" size={20} />
+                        <span className="font-semibold">ВКонтакте</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </Card>
