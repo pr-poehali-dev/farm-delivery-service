@@ -16,6 +16,7 @@ interface Product {
   weights: number[];
   pricePerKg: number;
   image: string;
+  description?: string;
 }
 
 interface CartItem {
@@ -25,20 +26,20 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/files/1000000688.jpg' },
-  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 42, image: 'https://cdn.poehali.dev/files/1002862244.jpg' },
-  { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg' },
-  { id: '13', name: 'Сборная сетка 10кг: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/8de18690-3e36-48b1-af83-68fb7fb43513.jpg' },
-  { id: '14', name: 'Сборная сетка 10кг: Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/ed523b88-cb0d-44b7-be22-fd449ab29bf8.jpg' },
-  { id: '15', name: 'Сборная сетка 10кг: Морковь + Лук', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/d8c12a98-7cfb-46f9-81b7-d1469d242ae1.jpg' },
-  { id: '17', name: 'Лук 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1001613623.jpg' },
-  { id: '18', name: 'Морковь 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002215225.jpg' },
-  { id: '19', name: 'Свекла 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002215227.jpg' },
-  { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], pricePerKg: 130, image: 'https://cdn.poehali.dev/files/1001628999.jpg' },
-  { id: '8', name: 'Капуста Сибирь', category: 'Овощи', weights: [20], pricePerKg: 65, image: 'https://cdn.poehali.dev/files/1002646994.jpg' },
-  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: 'https://cdn.poehali.dev/files/1002520711.jpg' },
-  { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1.5], pricePerKg: 333, image: 'https://cdn.poehali.dev/files/1002520708.jpg' },
-  { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5], pricePerKg: 600, image: 'https://cdn.poehali.dev/files/1000101387.jpg' },
+  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/files/1000000688.jpg', description: 'Столовый сорт с розовой кожурой и нежной мякотью. Отлично подходит для варки и запекания.' },
+  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 42, image: 'https://cdn.poehali.dev/files/1002862244.jpg', description: 'Ранний сорт с гладкой желтой кожурой. Идеален для жарки и салатов.' },
+  { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Элитный сорт с тонкой кожурой и нежным вкусом. Универсален в приготовлении.' },
+  { id: '13', name: 'Сборная сетка 10кг: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/8de18690-3e36-48b1-af83-68fb7fb43513.jpg', description: 'Готовый набор основных овощей для борща и других блюд. Экономия времени и денег.' },
+  { id: '14', name: 'Сборная сетка 10кг: Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/ed523b88-cb0d-44b7-be22-fd449ab29bf8.jpg', description: 'Идеальное сочетание для приготовления салатов и гарниров.' },
+  { id: '15', name: 'Сборная сетка 10кг: Морковь + Лук', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/files/d8c12a98-7cfb-46f9-81b7-d1469d242ae1.jpg', description: 'Базовый набор для супов, подлив и зажарок.' },
+  { id: '17', name: 'Лук 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1001613623.jpg', description: 'Отборный репчатый лук. Крупный, плотный, долго хранится.' },
+  { id: '18', name: 'Морковь 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002215225.jpg', description: 'Сладкая сочная морковь. Богата каротином и витаминами.' },
+  { id: '19', name: 'Свекла 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002215227.jpg', description: 'Столовая свекла насыщенного бордового цвета. Для борщей, винегретов и салатов.' },
+  { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], pricePerKg: 130, image: 'https://cdn.poehali.dev/files/1001628999.jpg', description: 'Соевое масло холодного отжима без химии. Содержит до 3800мг лецитина на 100гр - снижает холестерин, защищает печень, стимулирует мозговую деятельность. Подходит для жарки и салатов.' },
+  { id: '8', name: 'Капуста Сибирь', category: 'Овощи', weights: [20], pricePerKg: 65, image: 'https://cdn.poehali.dev/files/1002646994.jpg', description: 'Сибирский сорт белокочанной капусты. Плотные кочаны, отлично подходит для квашения.' },
+  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: 'https://cdn.poehali.dev/files/1002520711.jpg', description: 'Домашняя квашеная капуста по традиционному рецепту. Хрустящая, с натуральным вкусом.' },
+  { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1.5], pricePerKg: 333, image: 'https://cdn.poehali.dev/files/1002520708.jpg', description: 'Хрустящие бочковые огурцы. Засолены без уксуса, с укропом и чесноком.' },
+  { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5], pricePerKg: 600, image: 'https://cdn.poehali.dev/files/1000101387.jpg', description: 'Острая аджика по домашнему рецепту. Натуральный вкус без консервантов.' },
 ];
 
 export default function Index() {
@@ -247,6 +248,9 @@ export default function Index() {
                     </div>
                     <h3 className="font-bold text-lg mb-2">{product.name}</h3>
                     <Badge variant="secondary" className="mb-3">{product.category}</Badge>
+                    {product.description && (
+                      <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{product.description}</p>
+                    )}
                     <p className="text-2xl font-bold text-primary mb-4">{product.pricePerKg} ₽/кг</p>
                     <div className="space-y-3">
                       <div>
