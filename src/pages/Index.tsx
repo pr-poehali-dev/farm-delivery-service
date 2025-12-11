@@ -15,7 +15,8 @@ interface Product {
   name: string;
   category: string;
   weights: number[];
-  pricePerKg: number;
+  pricePerKg?: number;
+  prices?: Record<number, number>;
   image: string;
   description?: string;
 }
@@ -27,8 +28,8 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [20, 34], pricePerKg: 50, image: 'https://cdn.poehali.dev/files/1000000688.jpg', description: 'Среднеспелый сорт с розоватой кожурой и светлой мякотью. Нежный вкус и рассыпчатая текстура. Идеален для запекания, жарки, пюре и салатов. Хорошо хранится.' },
-  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], pricePerKg: 42, image: 'https://cdn.poehali.dev/files/1002862244.jpg', description: 'Среднеспелый сорт с желтой мякотью. Кремовая текстура и насыщенный вкус. Сохраняет форму при варке — отлично для салатов, запекания, жарки и пюре.' },
+  { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [20, 34], prices: { 20: 1200, 34: 1700 }, image: 'https://cdn.poehali.dev/files/1000000688.jpg', description: 'Среднеспелый сорт с розоватой кожурой и светлой мякотью. Нежный вкус и рассыпчатая текстура. Идеален для запекания, жарки, пюре и салатов. Хорошо хранится.' },
+  { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 20, 34], prices: { 10: 700, 20: 1100, 34: 1450 }, image: 'https://cdn.poehali.dev/files/1002862244.jpg', description: 'Среднеспелый сорт с желтой мякотью. Кремовая текстура и насыщенный вкус. Сохраняет форму при варке — отлично для салатов, запекания, жарки и пюре.' },
   { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Ранний сорт с тонкой кожурой и желтой нежной мякотью. Сладковатый вкус и кремовая текстура. Превосходен для пюре, запеканок, жарки. Не разваливается — идеален для салатов.' },
   { id: '20', name: 'Картофель "Гала Бэби"', category: 'Картофель', weights: [10, 20], pricePerKg: 40, image: 'https://cdn.poehali.dev/files/1002897457.jpg', description: 'Мелкий картофель до 4см, готовится в кожуре, как молодой. Идеален для запекания целиком с травами и специями. Нежная текстура и насыщенный вкус.' },
   { id: '13', name: 'Сборная сетка 10кг: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002897358.jpg', description: 'Готовый набор основных овощей для борща и других блюд. Экономия времени и денег.' },
@@ -83,8 +84,15 @@ export default function Index() {
     ));
   };
 
+  const getPrice = (product: Product, weight: number) => {
+    if (product.prices && product.prices[weight]) {
+      return product.prices[weight];
+    }
+    return (product.pricePerKg || 0) * weight;
+  };
+
   const getTotalPrice = () => {
-    return cart.reduce((total, item) => total + (item.product.pricePerKg * item.weight * item.quantity), 0);
+    return cart.reduce((total, item) => total + (getPrice(item.product, item.weight) * item.quantity), 0);
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -106,7 +114,7 @@ export default function Index() {
     orderText += `*Состав заказа:*\n`;
     
     cart.forEach((item, index) => {
-      orderText += `${index + 1}. ${item.product.name} — ${item.weight}кг × ${item.quantity}шт = ${item.product.pricePerKg * item.weight * item.quantity}₽\n`;
+      orderText += `${index + 1}. ${item.product.name} — ${item.weight}кг × ${item.quantity}шт = ${getPrice(item.product, item.weight) * item.quantity}₽\n`;
     });
     
     orderText += `\n💰 *Итого: ${getTotalPrice()}₽*`;
@@ -187,7 +195,7 @@ export default function Index() {
                         </div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-sm">{item.product.name}</h4>
-                          <p className="text-sm text-muted-foreground">{item.weight} кг × {item.product.pricePerKg} ₽</p>
+                          <p className="text-sm text-muted-foreground">{item.weight} кг × {getPrice(item.product, item.weight)} ₽</p>
                           <div className="flex items-center gap-2 mt-2">
                             <Button size="sm" variant="outline" onClick={() => updateQuantity(item.product.id, item.weight, item.quantity - 1)}>
                               <Icon name="Minus" size={14} />
@@ -199,7 +207,7 @@ export default function Index() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold">{item.product.pricePerKg * item.weight * item.quantity} ₽</p>
+                          <p className="font-bold">{getPrice(item.product, item.weight) * item.quantity} ₽</p>
                           <Button size="sm" variant="ghost" onClick={() => removeFromCart(item.product.id, item.weight)}>
                             <Icon name="Trash2" size={16} />
                           </Button>
@@ -329,22 +337,26 @@ export default function Index() {
                     {product.description && (
                       <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{product.description}</p>
                     )}
-                    <p className="text-2xl font-bold text-primary mb-4">{product.pricePerKg} ₽/кг</p>
                     <div className="space-y-3">
                       <div>
                         <Label className="text-xs text-muted-foreground">Выберите вес</Label>
                         <div className="flex flex-wrap gap-2 mt-2">
-                          {product.weights.map((weight) => (
-                            <Button
-                              key={weight}
-                              size="sm"
-                              variant={selectedWeights[product.id] === weight ? 'default' : 'outline'}
-                              onClick={() => setSelectedWeights({ ...selectedWeights, [product.id]: weight })}
-                              className="flex-1 min-w-[60px]"
-                            >
-                              {weight} кг
-                            </Button>
-                          ))}
+                          {product.weights.map((weight) => {
+                            const price = getPrice(product, weight);
+                            const pricePerKg = product.prices && product.prices[weight] ? Math.round(product.prices[weight] / weight) : product.pricePerKg;
+                            return (
+                              <Button
+                                key={weight}
+                                size="sm"
+                                variant={selectedWeights[product.id] === weight ? 'default' : 'outline'}
+                                onClick={() => setSelectedWeights({ ...selectedWeights, [product.id]: weight })}
+                                className="flex-1 min-w-[80px] flex flex-col items-center gap-0 h-auto py-2"
+                              >
+                                <span className="font-bold">{weight} кг</span>
+                                <span className="text-xs">{price}₽</span>
+                              </Button>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
