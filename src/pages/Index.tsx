@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
+import InputMask from 'react-input-mask';
 
 interface Product {
   id: string;
@@ -217,7 +218,13 @@ export default function Index() {
                         </div>
                         <div>
                           <Label htmlFor="phone">Телефон</Label>
-                          <Input id="phone" placeholder="+7 (___) ___-__-__" value={customerPhone} onChange={(e) => setCustomerPhone(e.target.value)} />
+                          <InputMask 
+                            mask="+7 (999) 999-99-99" 
+                            value={customerPhone} 
+                            onChange={(e) => setCustomerPhone(e.target.value)}
+                          >
+                            {(inputProps: any) => <Input {...inputProps} id="phone" placeholder="+7 (___) ___-__-__" />}
+                          </InputMask>
                         </div>
                         <div>
                           <Label htmlFor="address">Адрес доставки</Label>
