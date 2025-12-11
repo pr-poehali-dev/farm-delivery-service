@@ -104,6 +104,9 @@ export default function Index() {
             <button onClick={() => scrollToSection('delivery')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'delivery' ? 'text-primary' : 'text-foreground'}`}>Доставка</button>
             <button onClick={() => scrollToSection('contacts')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'contacts' ? 'text-primary' : 'text-foreground'}`}>Контакты</button>
             <div className="flex items-center gap-2 ml-2">
+              <a href="tel:+79025553558" className="p-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                <Icon name="Phone" size={18} />
+              </a>
               <a href="https://wa.me/79025553558" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#25D366] text-white hover:bg-[#22c55e] transition-colors">
                 <Icon name="MessageCircle" size={18} />
               </a>
