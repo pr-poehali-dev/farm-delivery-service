@@ -474,20 +474,6 @@ export default function Index() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="text-4xl">⏰</div>
-                      <div>
-                        <h3 className="font-bold text-lg mb-2">Удобное время</h3>
-                        <p className="text-muted-foreground">
-                          Доставляем в любое удобное для вас время. Работаем без выходных.
-                          Звоните и согласуем удобное время!
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
             </div>
           </div>
