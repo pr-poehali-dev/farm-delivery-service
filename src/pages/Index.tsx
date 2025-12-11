@@ -38,9 +38,9 @@ const products: Product[] = [
   { id: '19', name: 'Свекла 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002215227.jpg', description: 'Столовая свекла насыщенного бордового цвета. Для борщей, винегретов и салатов.' },
   { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], pricePerKg: 130, image: 'https://cdn.poehali.dev/files/1001628999.jpg', description: 'Соевое масло холодного отжима без химии. Содержит до 3800мг лецитина на 100гр - снижает холестерин, защищает печень, стимулирует мозговую деятельность. Подходит для жарки и салатов.' },
   { id: '8', name: 'Капуста Сибирь', category: 'Овощи', weights: [20], pricePerKg: 65, image: 'https://cdn.poehali.dev/files/1002646994.jpg', description: 'Сибирский сорт белокочанной капусты. Плотные кочаны, отлично подходит для квашения.' },
-  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: 'https://cdn.poehali.dev/files/1002520711.jpg', description: 'Домашняя квашеная капуста по традиционному рецепту. Хрустящая, с натуральным вкусом.' },
-  { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1.5], pricePerKg: 333, image: 'https://cdn.poehali.dev/files/1002520708.jpg', description: 'Хрустящие бочковые огурцы. Засолены без уксуса, с укропом и чесноком.' },
-  { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5], pricePerKg: 600, image: 'https://cdn.poehali.dev/files/1000101387.jpg', description: 'Острая аджика по домашнему рецепту. Натуральный вкус без консервантов.' },
+  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: 'https://cdn.poehali.dev/files/1002520711.jpg', description: 'Хрустящая квашеная капуста по рецепту из ГОСТ 1956 года. В составе только капуста, морковь, соль.' },
+  { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1.5], pricePerKg: 333, image: 'https://cdn.poehali.dev/files/1002520708.jpg', description: 'Дерзкие бочковые огурчики, традиционный рецепт без уксуса. Плотные, хрустящие. Сложно остановиться.' },
+  { id: '11', name: 'Аджика домашняя', category: 'Заготовки', weights: [0.5], pricePerKg: 600, image: 'https://cdn.poehali.dev/files/1000101387.jpg', description: 'Бодрящая домашняя аджика из свежих томатов, с хреном, чесноком и перцем. Соль и ничего лишнего. Насыщенный вкус и аромат, бодрящая, но не обжигающая.' },
 ];
 
 export default function Index() {
