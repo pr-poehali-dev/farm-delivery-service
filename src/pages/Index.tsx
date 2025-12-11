@@ -419,7 +419,7 @@ export default function Index() {
                     <p className="text-xl font-semibold">Приморский край, п. Заводской</p>
                   </div>
                   <div className="pt-6 border-t mt-6">
-                    <p className="text-muted-foreground mb-6">Работаем ежедневно с 9:00 до 21:00</p>
+                    <p className="text-muted-foreground mb-6">Работаем ежедневно с 9:00 до 19:00</p>
                     <div className="flex justify-center gap-4">
                       <a 
                         href="https://wa.me/79025553558" 
