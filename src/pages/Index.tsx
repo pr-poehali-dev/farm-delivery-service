@@ -46,6 +46,9 @@ export default function Index() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [selectedWeights, setSelectedWeights] = useState<Record<string, number>>({});
   const [activeSection, setActiveSection] = useState('home');
+  const [customerName, setCustomerName] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
 
   const addToCart = (product: Product) => {
     const weight = selectedWeights[product.id] || product.weights[0];
@@ -87,6 +90,43 @@ export default function Index() {
     setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleOrderSubmit = () => {
+    if (!customerName || !customerPhone || !customerAddress) {
+      toast.error('Пожалуйста, заполните все поля');
+      return;
+    }
+
+    let orderText = `🛒 *Новый заказ*\n\n`;
+    orderText += `👤 *Имя:* ${customerName}\n`;
+    orderText += `📱 *Телефон:* ${customerPhone}\n`;
+    orderText += `📍 *Адрес:* ${customerAddress}\n\n`;
+    orderText += `*Состав заказа:*\n`;
+    
+    cart.forEach((item, index) => {
+      orderText += `${index + 1}. ${item.product.name} — ${item.weight}кг × ${item.quantity}шт = ${item.product.pricePerKg * item.weight * item.quantity}₽\n`;
+    });
+    
+    orderText += `\n💰 *Итого: ${getTotalPrice()}₽*`;
+
+    const encodedText = encodeURIComponent(orderText);
+    const phone = '79025553558';
+    
+    const telegramUrl = `https://t.me/+${phone}?text=${encodedText}`;
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodedText}`;
+    
+    window.open(telegramUrl, '_blank');
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+    }, 500);
+    
+    toast.success('Заказ отправлен! Мы свяжемся с вами в ближайшее время.');
+    
+    setCart([]);
+    setCustomerName('');
+    setCustomerPhone('');
+    setCustomerAddress('');
   };
 
   return (
@@ -173,18 +213,18 @@ export default function Index() {
                       <div className="space-y-3 mb-4">
                         <div>
                           <Label htmlFor="name">Имя</Label>
-                          <Input id="name" placeholder="Введите ваше имя" />
+                          <Input id="name" placeholder="Введите ваше имя" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
                         </div>
                         <div>
                           <Label htmlFor="phone">Телефон</Label>
-                          <Input id="phone" placeholder="+7 (___) ___-__-__" />
+                          <Input id="phone" placeholder="+7 (___) ___-__-__" value={customerPhone} onChange={(e) => setCustomerPhone(e.target.value)} />
                         </div>
                         <div>
                           <Label htmlFor="address">Адрес доставки</Label>
-                          <Textarea id="address" placeholder="Улица, дом, квартира" rows={3} />
+                          <Textarea id="address" placeholder="Улица, дом, квартира" rows={3} value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} />
                         </div>
                       </div>
-                      <Button className="w-full" size="lg" onClick={() => toast.success('Заказ оформлен! Мы свяжемся с вами в ближайшее время.')}>
+                      <Button className="w-full" size="lg" onClick={handleOrderSubmit}>
                         Оформить заказ
                       </Button>
                       <p className="text-xs text-muted-foreground text-center mt-2">🚚 Бесплатная доставка в квартиру</p>
