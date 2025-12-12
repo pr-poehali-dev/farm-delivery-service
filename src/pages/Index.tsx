@@ -381,12 +381,13 @@ export default function Index() {
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-primary">О нас</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Мы — семейная ферма с 11-летним опытом выращивания и доставки экологически чистых овощей нашим клиентам. 
-                Наши поля расположены в экологически чистом районе, вдали от промышленных предприятий.
+                Мы — семейная ферма с 11-летним опытом выращивания и доставки экологически чистых овощей во Владивостоке, Артеме, Надеждинске, Большом Камне и Фокино. 
+                Наши поля расположены в экологически чистом районе Приморского края, вдали от промышленных предприятий.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
                 Мы не используем химические удобрения и пестициды. Только натуральные органические подкормки 
-                и традиционные методы земледелия. Каждый овощ выращен с любовью и заботой о вашем здоровье.
+                и традиционные методы земледелия. Каждый овощ выращен с любовью и заботой о вашем здоровье. 
+                Доставляем свежие овощи и заготовки по всему Приморью.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div className="p-6 bg-white rounded-lg">
@@ -452,6 +453,14 @@ export default function Index() {
                           <div className="flex items-center gap-2">
                             <span className="text-primary">✓</span>
                             <span>Надеждинск</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Большой Камень</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary">✓</span>
+                            <span>Фокино</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="text-primary">✓</span>
