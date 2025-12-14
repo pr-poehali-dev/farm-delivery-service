@@ -564,9 +564,24 @@ export default function Index() {
             <span className="text-3xl">🌾</span>
             <h3 className="text-2xl font-bold">ФермаВДК</h3>
           </div>
-          <p className="text-sm opacity-90">
+          <p className="text-sm opacity-90 mb-4">
             © 2024 ФермаВДК. Свежие овощи от фермера.
           </p>
+          <div className="flex justify-center">
+            <a 
+              href="https://metrika.yandex.ru/stat/?id=105797153&from=informer" 
+              target="_blank" 
+              rel="nofollow noopener noreferrer"
+            >
+              <img 
+                src="https://informer.yandex.ru/informer/105797153/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" 
+                style={{width: '88px', height: '31px', border: '0'}} 
+                alt="Яндекс.Метрика" 
+                title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"
+                className="opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </a>
+          </div>
         </div>
       </footer>
 
