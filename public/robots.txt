@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://farm-delivery-service.poehali.dev/sitemap.xml
+Sitemap: https://xn--80aalcjb4bbi2a7j.xn--p1ai/sitemap.xml
 
 User-agent: Yandex
 Allow: /
