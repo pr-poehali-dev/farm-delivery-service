@@ -50,13 +50,6 @@ const products: Product[] = [
   { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], pricePerKg: 130, image: 'https://cdn.poehali.dev/files/1001628999.jpg', description: 'Масло приготовленное технологией холодного пресса-без растворителей. Янтарного цвета, густое, с ароматом сои.' },
 ];
 
-const reviews = [
-  { id: 1, name: 'Елена М.', city: 'Владивосток', rating: 5, text: 'Заказываю картофель уже третий раз. Всегда свежий, отборный. Доставили прямо в квартиру, бесплатно!', date: '10.12.2024' },
-  { id: 2, name: 'Сергей П.', city: 'Артем', rating: 5, text: 'Квашеная капуста просто огонь! Как у бабушки в детстве. Хрустящая, не кислая. Рекомендую всем.', date: '05.12.2024' },
-  { id: 3, name: 'Ольга К.', city: 'Надеждинск', rating: 5, text: 'Очень удобно заказывать сборные сетки. Не надо думать что купить для борща. И цена приятная.', date: '28.11.2024' },
-  { id: 4, name: 'Дмитрий В.', city: 'Большой Камень', rating: 5, text: 'Огурчики бочковые — восторг! Настоящие, как раньше делали. Без химии и уксуса.', date: '20.11.2024' },
-];
-
 const faqItems = [
   { question: 'Куда вы доставляете?', answer: 'Мы доставляем во Владивосток, Артем, Надеждинск, Большой Камень и Фокино. Доставка бесплатная при заказе от 20 кг.' },
   { question: 'Сколько стоит доставка?', answer: 'Доставка бесплатная при заказе от 20 кг. Привозим прямо в квартиру, поднимаем на этаж.' },
@@ -184,7 +177,6 @@ export default function Index() {
           <nav className="hidden md:flex items-center gap-6">
             <button onClick={() => scrollToSection('home')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'home' ? 'text-primary' : 'text-foreground'}`}>Главная</button>
             <button onClick={() => scrollToSection('catalog')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'catalog' ? 'text-primary' : 'text-foreground'}`}>Каталог</button>
-            <button onClick={() => scrollToSection('reviews')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'reviews' ? 'text-primary' : 'text-foreground'}`}>Отзывы</button>
             <button onClick={() => scrollToSection('about')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'about' ? 'text-primary' : 'text-foreground'}`}>О нас</button>
             <button onClick={() => scrollToSection('delivery')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'delivery' ? 'text-primary' : 'text-foreground'}`}>Доставка</button>
             <button onClick={() => scrollToSection('faq')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'faq' ? 'text-primary' : 'text-foreground'}`}>FAQ</button>
@@ -421,34 +413,7 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="reviews" className="py-20 bg-accent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12 text-primary">Отзывы наших клиентов</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {reviews.map((review) => (
-                <Card key={review.id} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h3 className="font-bold text-lg">{review.name}</h3>
-                        <p className="text-sm text-muted-foreground">{review.city}</p>
-                      </div>
-                      <div className="flex">
-                        {[...Array(review.rating)].map((_, i) => (
-                          <Icon key={i} name="Star" size={16} className="fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground mb-3 leading-relaxed">{review.text}</p>
-                    <p className="text-xs text-muted-foreground">{review.date}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="about" className="py-20 bg-background">
+        <section id="about" className="py-20 bg-accent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-primary">О нас</h2>
