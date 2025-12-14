@@ -188,7 +188,11 @@ export default function Index() {
                       <div key={`${item.product.id}-${item.weight}-${index}`} className="flex items-center gap-4 p-4 bg-accent rounded-lg">
                         <div className="w-16 h-16 flex items-center justify-center overflow-hidden rounded-lg bg-white">
                           {item.product.image.startsWith('http') ? (
-                            <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
+                            <img 
+                              src={item.product.image} 
+                              alt={`${item.product.name} в корзине`} 
+                              className="w-full h-full object-cover" 
+                            />
                           ) : (
                             <span className="text-3xl">{item.product.image}</span>
                           )}
@@ -330,7 +334,11 @@ export default function Index() {
                   <CardContent className="p-6 flex-1 flex flex-col">
                     <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent">
                       {product.image.startsWith('http') ? (
-                        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                        <img 
+                          src={product.image} 
+                          alt={`${product.name} - ${product.description || 'фермерские продукты с доставкой во Владивостоке'}`} 
+                          className="w-full h-full object-cover" 
+                        />
                       ) : (
                         <span className="text-6xl">{product.image}</span>
                       )}
