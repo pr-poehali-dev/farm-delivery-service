@@ -144,7 +144,7 @@ export default function Index() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-3xl">🌾</span>
-            <h1 className="text-2xl font-bold text-primary">ФермаВДК</h1>
+            <div className="text-2xl font-bold text-primary">ФермаВДК</div>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <button onClick={() => scrollToSection('home')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'home' ? 'text-primary' : 'text-foreground'}`}>Главная</button>
@@ -256,9 +256,9 @@ export default function Index() {
         <section id="home" className="py-20 bg-gradient-to-b from-accent to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h2 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
                 Свежие овощи от фермера
-              </h2>
+              </h1>
               <p className="text-xl text-muted-foreground mb-8">
                 Доставляем натуральные продукты напрямую с полей. Без посредников, без химии, только польза природы.
               </p>
