@@ -150,13 +150,9 @@ export default function Index() {
     const encodedText = encodeURIComponent(orderText);
     const phone = '79025553558';
     
-    const telegramUrl = `https://t.me/+${phone}?text=${encodedText}`;
     const whatsappUrl = `https://wa.me/${phone}?text=${encodedText}`;
     
-    window.open(telegramUrl, '_blank');
-    setTimeout(() => {
-      window.open(whatsappUrl, '_blank');
-    }, 500);
+    window.open(whatsappUrl, '_blank');
     
     toast.success('Заказ отправлен! Мы свяжемся с вами в ближайшее время.');
     
