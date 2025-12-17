@@ -147,25 +147,33 @@ export default function Index() {
     
     orderText += `\n💰 *Итого: ${getTotalPrice()}₽*`;
 
-    const encodedText = encodeURIComponent(orderText);
-    const phone = '79025553558';
-    
-    // Отправка в WhatsApp
-    window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
-    
     // Отправка в Telegram через API
     try {
-      await fetch('https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100', {
+      const response = await fetch('https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: orderText })
       });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        console.error('Telegram error:', result);
+        toast.error('Не удалось отправить в Telegram. Проверьте настройки бота.');
+      } else {
+        toast.success('Заказ успешно отправлен в Telegram!');
+      }
     } catch (error) {
       console.error('Ошибка отправки в Telegram:', error);
+      toast.error('Ошибка соединения с сервером');
     }
     
-    toast.success('Заказ отправлен! Мы свяжемся с вами в ближайшее время.');
+    // Отправка в WhatsApp
+    const encodedText = encodeURIComponent(orderText);
+    const phone = '79025553558';
+    window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
     
+    // Очищаем корзину только после всех отправок
     setCart([]);
     setCustomerName('');
     setCustomerPhone('');
