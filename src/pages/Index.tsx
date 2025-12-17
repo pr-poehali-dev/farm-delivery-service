@@ -129,7 +129,7 @@ export default function Index() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleOrderSubmit = () => {
+  const handleOrderSubmit = async () => {
     if (!customerName || !customerPhone || !customerAddress) {
       toast.error('Пожалуйста, заполните все поля');
       return;
@@ -150,9 +150,19 @@ export default function Index() {
     const encodedText = encodeURIComponent(orderText);
     const phone = '79025553558';
     
-    const whatsappUrl = `https://wa.me/${phone}?text=${encodedText}`;
+    // Отправка в WhatsApp
+    window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
     
-    window.open(whatsappUrl, '_blank');
+    // Отправка в Telegram через API
+    try {
+      await fetch('https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: orderText })
+      });
+    } catch (error) {
+      console.error('Ошибка отправки в Telegram:', error);
+    }
     
     toast.success('Заказ отправлен! Мы свяжемся с вами в ближайшее время.');
     
