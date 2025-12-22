@@ -129,51 +129,32 @@ export default function Index() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleOrderSubmit = async () => {
+  const handleOrderSubmit = () => {
     if (!customerName || !customerPhone || !customerAddress) {
       toast.error('Пожалуйста, заполните все поля');
       return;
     }
 
-    let orderText = `🛒 *Новый заказ*\n\n`;
-    orderText += `👤 *Имя:* ${customerName}\n`;
-    orderText += `📱 *Телефон:* ${customerPhone}\n`;
-    orderText += `📍 *Адрес:* ${customerAddress}\n\n`;
-    orderText += `*Состав заказа:*\n`;
+    let orderText = `🛒 Новый заказ\n\n`;
+    orderText += `👤 Имя: ${customerName}\n`;
+    orderText += `📱 Телефон: ${customerPhone}\n`;
+    orderText += `📍 Адрес: ${customerAddress}\n\n`;
+    orderText += `Состав заказа:\n`;
     
     cart.forEach((item, index) => {
       orderText += `${index + 1}. ${item.product.name} — ${item.weight}кг × ${item.quantity}шт = ${getPrice(item.product, item.weight) * item.quantity}₽\n`;
     });
     
-    orderText += `\n💰 *Итого: ${getTotalPrice()}₽*`;
+    orderText += `\n💰 Итого: ${getTotalPrice()}₽`;
 
-    // Отправка в Telegram через API
-    try {
-      const response = await fetch('https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: orderText })
-      });
-      
-      const result = await response.json();
-      
-      if (!response.ok) {
-        console.error('Telegram error:', result);
-        toast.error('Не удалось отправить в Telegram. Проверьте настройки бота.');
-      } else {
-        toast.success('Заказ успешно отправлен в Telegram!');
-      }
-    } catch (error) {
-      console.error('Ошибка отправки в Telegram:', error);
-      toast.error('Ошибка соединения с сервером');
-    }
-    
-    // Отправка в WhatsApp
     const encodedText = encodeURIComponent(orderText);
     const phone = '79025553558';
+    
+    window.open(`https://t.me/+${phone}?text=${encodedText}`, '_blank');
     window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
     
-    // Очищаем корзину только после всех отправок
+    toast.success('Заказ отправлен!');
+    
     setCart([]);
     setCustomerName('');
     setCustomerPhone('');
