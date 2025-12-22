@@ -67,6 +67,7 @@ export default function Index() {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [deliveryMethod, setDeliveryMethod] = useState<'both' | 'telegram' | 'whatsapp'>('both');
 
   const addToCart = (product: Product) => {
     const weight = selectedWeights[product.id] || product.weights[0];
@@ -150,8 +151,13 @@ export default function Index() {
     const encodedText = encodeURIComponent(orderText);
     const phone = '79025553558';
     
-    window.open(`https://t.me/+${phone}?text=${encodedText}`, '_blank');
-    window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
+    if (deliveryMethod === 'both' || deliveryMethod === 'telegram') {
+      window.open(`https://t.me/+${phone}?text=${encodedText}`, '_blank');
+    }
+    
+    if (deliveryMethod === 'both' || deliveryMethod === 'whatsapp') {
+      window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
+    }
     
     toast.success('Заказ отправлен!');
     
@@ -265,6 +271,37 @@ export default function Index() {
                         <div>
                           <Label htmlFor="address">Адрес доставки</Label>
                           <Textarea id="address" placeholder="Улица, дом, квартира" rows={3} value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} />
+                        </div>
+                        <div>
+                          <Label>Способ отправки</Label>
+                          <div className="flex gap-2">
+                            <Button 
+                              type="button"
+                              variant={deliveryMethod === 'both' ? 'default' : 'outline'} 
+                              className="flex-1 text-sm"
+                              onClick={() => setDeliveryMethod('both')}
+                            >
+                              Оба
+                            </Button>
+                            <Button 
+                              type="button"
+                              variant={deliveryMethod === 'telegram' ? 'default' : 'outline'} 
+                              className="flex-1 text-sm"
+                              onClick={() => setDeliveryMethod('telegram')}
+                            >
+                              <Icon name="Send" size={16} className="mr-1" />
+                              Telegram
+                            </Button>
+                            <Button 
+                              type="button"
+                              variant={deliveryMethod === 'whatsapp' ? 'default' : 'outline'} 
+                              className="flex-1 text-sm"
+                              onClick={() => setDeliveryMethod('whatsapp')}
+                            >
+                              <Icon name="MessageCircle" size={16} className="mr-1" />
+                              WhatsApp
+                            </Button>
+                          </div>
                         </div>
                       </div>
                       <Button className="w-full" size="lg" onClick={handleOrderSubmit}>
