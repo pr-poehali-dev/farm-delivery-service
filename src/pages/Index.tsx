@@ -416,6 +416,7 @@ export default function Index() {
                           {product.weights.map((weight) => {
                             const price = getPrice(product, weight);
                             const pricePerKg = product.prices && product.prices[weight] ? Math.round(product.prices[weight] / weight) : product.pricePerKg;
+                            const weightLabel = product.id === '11' && weight === 0.5 ? '500 мл' : `${weight} кг`;
                             return (
                               <Button
                                 key={weight}
@@ -424,7 +425,7 @@ export default function Index() {
                                 onClick={() => setSelectedWeights({ ...selectedWeights, [product.id]: weight })}
                                 className="flex-1 min-w-[80px] flex flex-col items-center gap-0 h-auto py-2"
                               >
-                                <span className="font-bold">{weight} кг</span>
+                                <span className="font-bold">{weightLabel}</span>
                                 <span className="text-xs">{price}₽</span>
                               </Button>
                             );
