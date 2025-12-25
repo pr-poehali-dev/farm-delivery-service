@@ -143,7 +143,8 @@ export default function Index() {
     orderText += `Состав заказа:\n`;
     
     cart.forEach((item, index) => {
-      orderText += `${index + 1}. ${item.product.name} — ${item.weight}кг × ${item.quantity}шт = ${getPrice(item.product, item.weight) * item.quantity}₽\n`;
+      const weightLabel = item.product.id === '11' && item.weight === 0.5 ? '500мл' : `${item.weight}кг`;
+      orderText += `${index + 1}. ${item.product.name} — ${weightLabel} × ${item.quantity}шт = ${getPrice(item.product, item.weight) * item.quantity}₽\n`;
     });
     
     orderText += `\n💰 Итого: ${getTotalPrice()}₽`;
@@ -229,7 +230,7 @@ export default function Index() {
                         </div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-sm">{item.product.name}</h4>
-                          <p className="text-sm text-muted-foreground">{item.weight} кг × {getPrice(item.product, item.weight)} ₽</p>
+                          <p className="text-sm text-muted-foreground">{item.product.id === '11' && item.weight === 0.5 ? '500 мл' : `${item.weight} кг`} × {getPrice(item.product, item.weight)} ₽</p>
                           <div className="flex items-center gap-2 mt-2">
                             <Button size="sm" variant="outline" onClick={() => updateQuantity(item.product.id, item.weight, item.quantity - 1)}>
                               <Icon name="Minus" size={14} />
