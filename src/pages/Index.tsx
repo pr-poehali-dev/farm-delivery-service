@@ -143,7 +143,9 @@ export default function Index() {
     orderText += `Состав заказа:\n`;
     
     cart.forEach((item, index) => {
-      const weightLabel = item.product.id === '11' && item.weight === 0.5 ? '500мл' : `${item.weight}кг`;
+      let weightLabel = `${item.weight}кг`;
+      if (item.product.id === '11' && item.weight === 0.5) weightLabel = '500мл';
+      if (item.product.id === '16' && item.weight === 5) weightLabel = '5л';
       orderText += `${index + 1}. ${item.product.name} — ${weightLabel} × ${item.quantity}шт = ${getPrice(item.product, item.weight) * item.quantity}₽\n`;
     });
     
@@ -417,7 +419,9 @@ export default function Index() {
                           {product.weights.map((weight) => {
                             const price = getPrice(product, weight);
                             const pricePerKg = product.prices && product.prices[weight] ? Math.round(product.prices[weight] / weight) : product.pricePerKg;
-                            const weightLabel = product.id === '11' && weight === 0.5 ? '500 мл' : `${weight} кг`;
+                            let weightLabel = `${weight} кг`;
+                            if (product.id === '11' && weight === 0.5) weightLabel = '500 мл';
+                            if (product.id === '16' && weight === 5) weightLabel = '5 л';
                             return (
                               <Button
                                 key={weight}
