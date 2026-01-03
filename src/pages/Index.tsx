@@ -353,13 +353,13 @@ export default function Index() {
                   <span>Группа WhatsApp</span>
                 </a>
                 <a 
-                  href="https://max.ru/join/A0Im7QSZxCi4-ehXt_uTDyD12VSnqUwiYonh_uM3KJI" 
+                  href="https://max.ru/id251004790824_biz" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-colors text-sm font-medium"
                 >
                   <Icon name="MessageSquare" size={18} />
-                  <span>Чат MAX</span>
+                  <span>Канал MAX</span>
                 </a>
                 <a 
                   href="https://t.me/FermaVladivostok" 
