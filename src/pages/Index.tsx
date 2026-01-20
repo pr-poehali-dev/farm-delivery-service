@@ -163,7 +163,9 @@ export default function Index() {
       window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
     }
     
-    toast.success('Заказ отправлен!');
+    toast.success('Спасибо за заказ! Оператор ответит Вам в ближайшее время!', {
+      duration: 5000,
+    });
     
     setCart([]);
     setCustomerName('');
