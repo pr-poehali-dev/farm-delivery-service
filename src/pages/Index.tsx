@@ -156,7 +156,7 @@ export default function Index() {
     const phone = '79025553558';
     
     if (deliveryMethod === 'both' || deliveryMethod === 'telegram') {
-      window.open(`https://t.me/+${phone}?text=${encodedText}`, '_blank');
+      window.open(`https://t.me/${phone}?text=${encodedText}`, '_blank');
     }
     
     if (deliveryMethod === 'both' || deliveryMethod === 'whatsapp') {
