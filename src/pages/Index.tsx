@@ -399,11 +399,11 @@ export default function Index() {
             <h2 className="text-4xl font-bold text-center mb-12 text-primary">Наш ассортимент</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.map((product) => (
-                <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col">
+                <Card key={product.id} className={`overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
                   <CardContent className="p-6 flex-1 flex flex-col">
                     <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
                       {product.isNew && (
-                        <Badge className="absolute top-2 left-2 z-10 bg-red-500 hover:bg-red-500 text-white font-bold text-xs px-2 py-1">Новинка</Badge>
+                        <Badge className="absolute top-2 left-2 z-10 bg-red-500 hover:bg-red-500 text-white font-bold text-sm px-3 py-1 animate-pulse shadow-md">Новинка</Badge>
                       )}
                       {product.image.startsWith('http') ? (
                         <img 
