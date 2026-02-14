@@ -25,6 +25,7 @@ interface Product {
   prices?: Record<number, number>;
   image: string;
   description?: string;
+  isNew?: boolean;
 }
 
 interface CartItem {
@@ -36,7 +37,7 @@ interface CartItem {
 const products: Product[] = [
   { id: '11', name: 'Аджика домашняя 500мл', category: 'Заготовки', weights: [0.5], pricePerKg: 600, image: 'https://cdn.poehali.dev/files/1000101387.jpg', description: 'Бодрящая домашняя аджика из свежих томатов, с хреном, чесноком и перцем. Соль и ничего лишнего. Насыщенный вкус и аромат, бодрящая, но не обжигающая.' },
   { id: '1', name: 'Картофель "Балтик Роуз"', category: 'Картофель', weights: [20, 34], prices: { 20: 1200, 34: 1700 }, image: 'https://cdn.poehali.dev/files/1000000688.jpg', description: 'Среднеспелый сорт с розоватой кожурой и светлой мякотью. Нежный вкус и рассыпчатая текстура. Идеален для запекания, жарки, пюре и салатов. Хорошо хранится.' },
-  { id: '22', name: 'Картофель "Беллароза" мытый', category: 'Картофель', weights: [10], prices: { 10: 800 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/4804b029-2005-4bba-9ac3-9a06035acef9.jpg', description: 'Ранний сорт с красной кожурой и жёлтой мякотью. Мытый — готов к использованию. Рассыпчатый, с насыщенным вкусом. Отлично подходит для пюре, запекания и жарки.' },
+  { id: '22', name: 'Картофель "Беллароза" мытый', category: 'Картофель', weights: [10], prices: { 10: 800 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/4804b029-2005-4bba-9ac3-9a06035acef9.jpg', description: 'Ранний сорт с красной кожурой и жёлтой мякотью. Мытый — готов к использованию. Рассыпчатый, с насыщенным вкусом. Отлично подходит для пюре, запекания и жарки.', isNew: true },
   { id: '2', name: 'Картофель "Коломбо"', category: 'Картофель', weights: [10, 34], prices: { 10: 700, 34: 1450 }, image: 'https://cdn.poehali.dev/files/1002767599.jpg', description: 'Среднеспелый сорт с желтой мякотью. Кремовая текстура и насыщенный вкус. Сохраняет форму при варке — отлично для салатов, запекания, жарки и пюре.' },
   { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Ранний сорт с тонкой кожурой и желтой нежной мякотью. Сладковатый вкус и кремовая текстура. Превосходен для пюре, запеканок, жарки. Не разваливается — идеален для салатов.' },
   { id: '20', name: 'Картофель "Гала Бэби"', category: 'Картофель', weights: [10, 20], pricePerKg: 40, image: 'https://cdn.poehali.dev/files/1002897457.jpg', description: 'Мелкий картофель до 4см, готовится в кожуре, как молодой. Идеален для запекания целиком с травами и специями. Нежная текстура и насыщенный вкус.' },
@@ -400,7 +401,10 @@ export default function Index() {
               {products.map((product) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col">
                   <CardContent className="p-6 flex-1 flex flex-col">
-                    <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent">
+                    <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
+                      {product.isNew && (
+                        <Badge className="absolute top-2 left-2 z-10 bg-red-500 hover:bg-red-500 text-white font-bold text-xs px-2 py-1">Новинка</Badge>
+                      )}
                       {product.image.startsWith('http') ? (
                         <img 
                           src={product.image} 
