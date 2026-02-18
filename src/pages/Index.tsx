@@ -63,7 +63,12 @@ const faqItems = [
 ];
 
 export default function Index() {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    try {
+      const saved = localStorage.getItem('cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
   const [selectedWeights, setSelectedWeights] = useState<Record<string, number>>({});
   const [activeSection, setActiveSection] = useState('home');
   const [customerName, setCustomerName] = useState('');
@@ -71,6 +76,10 @@ export default function Index() {
   const [customerAddress, setCustomerAddress] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState<'both' | 'telegram' | 'whatsapp'>('both');
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product: Product) => {
     const weight = selectedWeights[product.id] || product.weights[0];
@@ -115,6 +124,14 @@ export default function Index() {
     return cart.reduce((total, item) => total + (getPrice(item.product, item.weight) * item.quantity), 0);
   };
 
+  const getTotalWeight = () => {
+    return cart.reduce((total, item) => total + (item.weight * item.quantity), 0);
+  };
+
+  const isMinOrderMet = () => {
+    return getTotalWeight() >= 20 || getTotalPrice() >= 2000;
+  };
+
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
@@ -134,6 +151,10 @@ export default function Index() {
   }, []);
 
   const handleOrderSubmit = () => {
+    if (!isMinOrderMet()) {
+      toast.error('Минимальный заказ — от 20 кг или от 2 000 ₽');
+      return;
+    }
     if (!customerName || !customerPhone || !customerAddress) {
       toast.error('Пожалуйста, заполните все поля');
       return;
@@ -170,6 +191,7 @@ export default function Index() {
     });
     
     setCart([]);
+    localStorage.removeItem('cart');
     setCustomerName('');
     setCustomerPhone('');
     setCustomerAddress('');
@@ -257,10 +279,19 @@ export default function Index() {
                       </div>
                     ))}
                     <div className="border-t pt-4">
-                      <div className="flex justify-between items-center mb-4">
+                      <div className="flex justify-between items-center mb-2">
                         <span className="text-lg font-semibold">Итого:</span>
                         <span className="text-2xl font-bold text-primary">{getTotalPrice()} ₽</span>
                       </div>
+                      <div className="flex justify-between items-center mb-2 text-sm text-muted-foreground">
+                        <span>Общий вес:</span>
+                        <span>{getTotalWeight()} кг</span>
+                      </div>
+                      {!isMinOrderMet() && (
+                        <div className="mb-4 p-3 rounded-lg bg-orange-50 border border-orange-200 text-orange-700 text-sm">
+                          Минимальный заказ — от 20 кг или от 2 000 ₽. Сейчас: {getTotalWeight()} кг / {getTotalPrice()} ₽
+                        </div>
+                      )}
                       <div className="space-y-3 mb-4">
                         <div>
                           <Label htmlFor="name">Имя</Label>
@@ -312,7 +343,7 @@ export default function Index() {
                           </div>
                         </div>
                       </div>
-                      <Button className="w-full" size="lg" onClick={handleOrderSubmit}>
+                      <Button className="w-full" size="lg" onClick={handleOrderSubmit} disabled={!isMinOrderMet()}>
                         Оформить заказ
                       </Button>
                       <p className="text-xs text-muted-foreground text-center mt-2">🚚 Бесплатная доставка в квартиру</p>
