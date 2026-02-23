@@ -218,7 +218,7 @@ export default function Index() {
               <a href="https://wa.me/79025553558" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#25D366] text-white hover:bg-[#22c55e] transition-colors">
                 <Icon name="MessageCircle" size={18} />
               </a>
-              <a href="https://t.me/+79025553558" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#0088cc] text-white hover:bg-[#0077b5] transition-colors">
+              <a href="https://t.me/FermaVDK" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#0088cc] text-white hover:bg-[#0077b5] transition-colors">
                 <Icon name="Send" size={18} />
               </a>
             </div>
