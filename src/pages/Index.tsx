@@ -303,7 +303,7 @@ export default function Index() {
                             value={customerPhone} 
                             onChange={(e) => setCustomerPhone(e.target.value)}
                           >
-                            {(inputProps: any) => <Input {...inputProps} id="phone" placeholder="+7 (___) ___-__-__" />}
+                            {(inputProps: React.InputHTMLAttributes<HTMLInputElement>) => <Input {...inputProps} id="phone" placeholder="+7 (___) ___-__-__" />}
                           </InputMask>
                         </div>
                         <div>
