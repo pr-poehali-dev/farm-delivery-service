@@ -210,7 +210,13 @@ export default function Index() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-3xl">🌾</span>
-            <div className="text-2xl font-bold text-primary">ФермаВДК</div>
+            <div>
+              <div className="text-2xl font-bold text-primary">ФермаВДК</div>
+              <a href="tel:+79025553558" className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors md:hidden">
+                <Icon name="Phone" size={12} />
+                8902-555-35-58
+              </a>
+            </div>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <button onClick={() => scrollToSection('home')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'home' ? 'text-primary' : 'text-foreground'}`}>Главная</button>
@@ -708,6 +714,10 @@ export default function Index() {
             <span className="text-3xl">🌾</span>
             <h3 className="text-2xl font-bold">ФермаВДК</h3>
           </div>
+          <a href="tel:+79025553558" className="flex items-center justify-center gap-2 text-lg font-bold opacity-90 hover:opacity-100 transition-opacity mb-3">
+            <Icon name="Phone" size={18} />
+            8902-555-35-58
+          </a>
           <p className="text-sm opacity-90 mb-4">
             © 2024 ФермаВДК. Свежие овощи от фермера.
           </p>
