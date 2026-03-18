@@ -193,8 +193,8 @@ export default function Index() {
       window.open(`https://wa.me/${operatorPhone}?text=${encodedText}`, '_blank');
     }
     
-    toast.success('Спасибо за заказ! Оператор свяжется с вами в ближайшее время!', {
-      duration: 5000,
+    toast.success('Спасибо за заказ! Оператор свяжется с вами в ближайшее время! В связи с нестабильной связью, если вы не получили от нас ответа, перезвоните пожалуйста: 8902-555-35-58', {
+      duration: 10000,
     });
     
     setCart([]);
