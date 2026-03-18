@@ -77,7 +77,7 @@ export default function Index() {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [deliveryMethod, setDeliveryMethod] = useState<'both' | 'telegram' | 'whatsapp'>('both');
+  const [deliveryMethod, setDeliveryMethod] = useState<'sms' | 'whatsapp'>('sms');
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -176,17 +176,19 @@ export default function Index() {
 
     const operatorPhone = '79025553558';
 
-    try {
-      await fetch('https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ to: operatorPhone, message: orderText })
-      });
-    } catch {
-      // SMS не критично, продолжаем
+    if (deliveryMethod === 'sms') {
+      try {
+        await fetch('https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ to: operatorPhone, message: orderText })
+        });
+      } catch {
+        // SMS не критично, продолжаем
+      }
     }
 
-    if (deliveryMethod === 'both' || deliveryMethod === 'whatsapp') {
+    if (deliveryMethod === 'whatsapp') {
       const encodedText = encodeURIComponent(orderText);
       window.open(`https://wa.me/${operatorPhone}?text=${encodedText}`, '_blank');
     }
@@ -317,24 +319,16 @@ export default function Index() {
                           <Textarea id="address" placeholder="Улица, дом, квартира" rows={3} value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} />
                         </div>
                         <div>
-                          <Label>Способ отправки</Label>
-                          <div className="flex gap-2">
+                          <Label>Способ связи с оператором</Label>
+                          <div className="flex gap-2 mt-1">
                             <Button 
                               type="button"
-                              variant={deliveryMethod === 'both' ? 'default' : 'outline'} 
+                              variant={deliveryMethod === 'sms' ? 'default' : 'outline'} 
                               className="flex-1 text-sm"
-                              onClick={() => setDeliveryMethod('both')}
+                              onClick={() => setDeliveryMethod('sms')}
                             >
-                              Оба
-                            </Button>
-                            <Button 
-                              type="button"
-                              variant={deliveryMethod === 'telegram' ? 'default' : 'outline'} 
-                              className="flex-1 text-sm"
-                              onClick={() => setDeliveryMethod('telegram')}
-                            >
-                              <Icon name="Send" size={16} className="mr-1" />
-                              Telegram
+                              <Icon name="MessageSquare" size={16} className="mr-1" />
+                              SMS
                             </Button>
                             <Button 
                               type="button"
