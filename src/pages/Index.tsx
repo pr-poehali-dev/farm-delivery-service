@@ -152,7 +152,7 @@ export default function Index() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleOrderSubmit = () => {
+  const handleOrderSubmit = async () => {
     if (!isMinOrderMet()) {
       toast.error('Минимальный заказ — от 20 кг или от 2 000 ₽');
       return;
@@ -162,33 +162,36 @@ export default function Index() {
       return;
     }
 
-    let orderText = `🛒 Новый заказ\n\n`;
-    orderText += `👤 Имя: ${customerName}\n`;
-    orderText += `📱 Телефон: ${customerPhone}\n`;
-    orderText += `📍 Адрес: ${customerAddress}\n\n`;
-    orderText += `Состав заказа:\n`;
+    let orderText = `Новый заказ! Имя: ${customerName}, Тел: ${customerPhone}, Адрес: ${customerAddress}. Состав: `;
     
     cart.forEach((item, index) => {
       let weightLabel = `${item.weight}кг`;
       if (item.product.id === '11' && item.weight === 0.5) weightLabel = '500мл';
       if (item.product.id === '16' && item.weight === 5) weightLabel = '5л';
-      orderText += `${index + 1}. ${item.product.name} — ${weightLabel} × ${item.quantity}шт = ${getPrice(item.product, item.weight) * item.quantity}₽\n`;
+      orderText += `${item.product.name} ${weightLabel}x${item.quantity}=${getPrice(item.product, item.weight) * item.quantity}р`;
+      if (index < cart.length - 1) orderText += ', ';
     });
     
-    orderText += `\n💰 Итого: ${getTotalPrice()}₽`;
+    orderText += `. Итого: ${getTotalPrice()}р`;
 
-    const encodedText = encodeURIComponent(orderText);
-    const phone = '79025553558';
-    
-    if (deliveryMethod === 'both' || deliveryMethod === 'telegram') {
-      window.open(`https://t.me/FermaVDK?text=${encodedText}`, '_blank');
+    const operatorPhone = '79025553558';
+
+    try {
+      await fetch('https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ to: operatorPhone, message: orderText })
+      });
+    } catch {
+      // SMS не критично, продолжаем
     }
-    
+
     if (deliveryMethod === 'both' || deliveryMethod === 'whatsapp') {
-      window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
+      const encodedText = encodeURIComponent(orderText);
+      window.open(`https://wa.me/${operatorPhone}?text=${encodedText}`, '_blank');
     }
     
-    toast.success('Спасибо за заказ! Оператор ответит Вам в ближайшее время!', {
+    toast.success('Спасибо за заказ! Оператор свяжется с вами в ближайшее время!', {
       duration: 5000,
     });
     
