@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Check SMS.ru API key",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {"auth": {}},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
 {
+  "check-sms": "https://functions.poehali.dev/ed0937c4-8e86-424e-8d2b-bf80e2c08b38",
   "send-order": "https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100"
 }
