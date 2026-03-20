@@ -152,7 +152,7 @@ export default function Index() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleOrderSubmit = async () => {
+  const handleOrderSubmit = () => {
     if (!isMinOrderMet()) {
       toast.error('Минимальный заказ — от 20 кг или от 2 000 ₽');
       return;
@@ -177,15 +177,8 @@ export default function Index() {
     const operatorPhone = '79025553558';
 
     if (deliveryMethod === 'sms') {
-      try {
-        await fetch('https://functions.poehali.dev/decee08c-f63d-4f5f-9764-087e149cf100', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ to: operatorPhone, message: orderText })
-        });
-      } catch {
-        // SMS не критично, продолжаем
-      }
+      const encodedText = encodeURIComponent(orderText);
+      window.location.href = `sms:${operatorPhone}?body=${encodedText}`;
     }
 
     if (deliveryMethod === 'whatsapp') {
