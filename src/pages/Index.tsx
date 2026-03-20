@@ -340,6 +340,12 @@ export default function Index() {
                               WhatsApp
                             </Button>
                           </div>
+                          {deliveryMethod === 'sms' && (
+                            <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
+                              <Icon name="Smartphone" size={12} />
+                              SMS-заказ работает только с мобильного телефона
+                            </p>
+                          )}
                         </div>
                       </div>
                       <Button className="w-full" size="lg" onClick={handleOrderSubmit} disabled={!isMinOrderMet()}>
