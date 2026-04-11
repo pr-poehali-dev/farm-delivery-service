@@ -39,8 +39,8 @@ const products: Product[] = [
 
   { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Прекрасно подходит для варки и жарки. Универсальный сорт.' },
   { id: '23', name: 'Картофель "Гала" продовольственный', category: 'Картофель', weights: [34], prices: { 34: 1550 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/ad03397e-5920-4ead-9c21-a33740852c79.jpg', description: 'Продовольственный картофель "Гала" в сетке 34 кг. Ранний высокоурожайный сорт с желтой мякотью. Не разваривается при варке, хорошие вкусовые качества.' },
-  { id: '25', name: 'Картофель "Балтик Роуз" семенной', category: 'Картофель', weights: [10], prices: { 10: 500 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/733d80c1-c33b-482b-ba2a-b7523e83b2d6.jpg', description: 'Семенной картофель "Балтик Роуз" — поздний сорт для длительного хранения. Яркая розовая кожура, насыщенно жёлтая мякоть. Отличные вкусовые качества, хорошая урожайность.' },
-  { id: '20', name: 'Картофель "Коломбо" семенной', category: 'Картофель', weights: [10, 20], pricePerKg: 40, image: 'https://cdn.poehali.dev/files/1002897457.jpg', description: 'Семенной картофель "Коломбо" - ранний, высокоурожайный сорт столового назначения. Период созревания от посадки до сбора урожая 70-80 дней. Преимущество сорта: высокая урожайность, имеет хорошие вкусовые качества, не разваривается при варке. Клубни округло-овальной формы. Кожура светло-жёлтого цвета с мелкими глазками, мякоть светло-жёлтого цвета.' },
+  { id: '25', name: 'Картофель "Балтик Роуз" семенной', category: 'Семенной картофель', weights: [10], prices: { 10: 500 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/733d80c1-c33b-482b-ba2a-b7523e83b2d6.jpg', description: 'Семенной картофель "Балтик Роуз" — поздний сорт для длительного хранения. Яркая розовая кожура, насыщенно жёлтая мякоть. Отличные вкусовые качества, хорошая урожайность.' },
+  { id: '20', name: 'Картофель "Коломбо" семенной', category: 'Семенной картофель', weights: [10, 20], pricePerKg: 40, image: 'https://cdn.poehali.dev/files/1002897457.jpg', description: 'Семенной картофель "Коломбо" - ранний, высокоурожайный сорт столового назначения. Период созревания от посадки до сбора урожая 70-80 дней. Преимущество сорта: высокая урожайность, имеет хорошие вкусовые качества, не разваривается при варке. Клубни округло-овальной формы. Кожура светло-жёлтого цвета с мелкими глазками, мякоть светло-жёлтого цвета.' },
   { id: '24', name: 'Картофель "Ла Страда"', category: 'Картофель', weights: [20], prices: { 20: 1200 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/78d78ab0-0272-42ad-ae99-25e235eba3d1.jpg', description: 'Столовый сорт шотландской селекции с белоснежной мякотью. Идеален для жарки — образует хрустящую корочку, не разваливается. Плотная текстура, насыщенный вкус.', hidden: true },
   { id: '13', name: 'Сборная сетка 10кг: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002897358.jpg', description: 'Готовый набор основных овощей для борща и других блюд. Экономия времени и денег.' },
   { id: '14', name: 'Сборная сетка 10кг: Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002897342.jpg', description: 'Идеальное сочетание для приготовления салатов и гарниров.' },
@@ -432,7 +432,7 @@ export default function Index() {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12 text-primary">Наш ассортимент</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {products.filter(p => !p.hidden).map((product) => (
+              {products.filter(p => !p.hidden && p.category !== 'Семенной картофель').map((product) => (
                 <Card key={product.id} className={`overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
                   <CardContent className="p-6 flex-1 flex flex-col">
                     <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
@@ -489,6 +489,66 @@ export default function Index() {
                   </CardFooter>
                 </Card>
               ))}
+            </div>
+
+            <div className="mt-16">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-px flex-1 bg-border" />
+                <h3 className="text-2xl font-bold text-primary whitespace-nowrap">🌱 Семенной картофель</h3>
+                <div className="h-px flex-1 bg-border" />
+              </div>
+              <p className="text-center text-muted-foreground mb-8">Отборный посадочный материал для вашего огорода</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {products.filter(p => !p.hidden && p.category === 'Семенной картофель').map((product) => (
+                  <Card key={product.id} className={`overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
+                    <CardContent className="p-6 flex-1 flex flex-col">
+                      <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
+                        {product.isNew && (
+                          <Badge className="absolute top-2 left-2 z-10 bg-red-500 hover:bg-red-500 text-white font-bold text-sm px-3 py-1 animate-pulse shadow-md">Новинка</Badge>
+                        )}
+                        {product.image.startsWith('http') ? (
+                          <img src={product.image} alt={`${product.name} - ${product.description || 'семенной картофель'}`} className="w-full h-full object-cover" />
+                        ) : (
+                          <span className="text-6xl">{product.image}</span>
+                        )}
+                      </div>
+                      <h3 className="font-bold text-lg mb-2">{product.name}</h3>
+                      <Badge variant="secondary" className="mb-3">{product.category}</Badge>
+                      {product.description && (
+                        <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-1">{product.description}</p>
+                      )}
+                      <div className="space-y-3 mt-auto">
+                        <div>
+                          <Label className="text-xs text-muted-foreground">Выберите вес</Label>
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {product.weights.map((weight) => {
+                              const price = getPrice(product, weight);
+                              const pricePerKg = product.prices && product.prices[weight] ? Math.round(product.prices[weight] / weight) : product.pricePerKg;
+                              const weightLabel = `${weight} кг`;
+                              return (
+                                <Button
+                                  key={weight}
+                                  variant={selectedWeights[product.id] === weight || (!selectedWeights[product.id] && product.weights[0] === weight) ? 'default' : 'outline'}
+                                  size="sm"
+                                  onClick={() => setSelectedWeights(prev => ({ ...prev, [product.id]: weight }))}
+                                  className="flex flex-col h-auto py-1 px-3"
+                                >
+                                  <span>{weightLabel}</span>
+                                  <span className="text-xs opacity-80">{price} ₽{pricePerKg && !product.prices ? `/кг` : ''}</span>
+                                </Button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                        <Button className="w-full" onClick={() => addToCart(product)}>
+                          <Icon name="ShoppingCart" size={16} className="mr-2" />
+                          В корзину
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </section>
