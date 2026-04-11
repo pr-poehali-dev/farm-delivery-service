@@ -213,6 +213,7 @@ export default function Index() {
           <nav className="hidden md:flex items-center gap-6">
             <button onClick={() => scrollToSection('home')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'home' ? 'text-primary' : 'text-foreground'}`}>Главная</button>
             <button onClick={() => scrollToSection('catalog')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'catalog' ? 'text-primary' : 'text-foreground'}`}>Каталог</button>
+            <button onClick={() => scrollToSection('seeds')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'seeds' ? 'text-primary' : 'text-foreground'}`}>Семенной</button>
             <button onClick={() => scrollToSection('about')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'about' ? 'text-primary' : 'text-foreground'}`}>О нас</button>
             <button onClick={() => scrollToSection('delivery')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'delivery' ? 'text-primary' : 'text-foreground'}`}>Доставка</button>
             <button onClick={() => scrollToSection('faq')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'faq' ? 'text-primary' : 'text-foreground'}`}>FAQ</button>
@@ -492,7 +493,7 @@ export default function Index() {
               ))}
             </div>
 
-            <div className="mt-16">
+            <div className="mt-16" id="seeds">
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px flex-1 bg-border" />
                 <h3 className="text-2xl font-bold text-primary whitespace-nowrap">🌱 Семенной картофель</h3>
