@@ -36,9 +36,9 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '22', name: 'Картофель "Королева Анна" мытый', category: 'Картофель', weights: [10], prices: { 10: 800 }, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Мытый, готов к приготовлению. Прекрасно подходит для варки и жарки. Универсальный сорт.', isNew: true, awaiting: true },
-
   { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Прекрасно подходит для варки и жарки. Универсальный сорт.' },
+
+  { id: '22', name: 'Картофель "Королева Анна" мытый', category: 'Картофель', weights: [10], prices: { 10: 800 }, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Мытый, готов к приготовлению. Прекрасно подходит для варки и жарки. Универсальный сорт.', isNew: true, awaiting: true },
   { id: '23', name: 'Картофель "Гала" продовольственный', category: 'Картофель', weights: [34], prices: { 34: 1550 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/ad03397e-5920-4ead-9c21-a33740852c79.jpg', description: 'Продовольственный картофель "Гала" в сетке 34 кг. Ранний высокоурожайный сорт с желтой мякотью. Не разваривается при варке, хорошие вкусовые качества.', awaiting: true },
   { id: '26', name: 'Картофель "Гала" семенной, 1-я репродукция', category: 'Семенной картофель', weights: [10], prices: { 10: 400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/ad03397e-5920-4ead-9c21-a33740852c79.jpg', description: 'Семенной картофель "Гала" 1-й репродукции. Ранний высокоурожайный сорт с жёлтой мякотью. Не разваривается при варке, отличные вкусовые качества.', awaiting: true },
   { id: '25', name: 'Картофель "Балтик Роуз" семенной', category: 'Семенной картофель', weights: [10], prices: { 10: 500 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/733d80c1-c33b-482b-ba2a-b7523e83b2d6.jpg', description: 'Семенной картофель "Балтик Роуз" — поздний сорт для длительного хранения. Яркая розовая кожура, насыщенно жёлтая мякоть. Отличные вкусовые качества, хорошая урожайность.', awaiting: true },
