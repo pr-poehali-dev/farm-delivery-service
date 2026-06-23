@@ -36,7 +36,7 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Прекрасно подходит для варки и жарки. Универсальный сорт.' },
+  { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Прекрасно подходит для варки и жарки. Универсальный сорт.', awaiting: true },
   { id: '27', name: 'Картофель молодой "Лили" урожай 2026г', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/06a255c1-32fc-4d86-88f8-0fac3d5540b9.jpg', description: 'Молодой картофель сорта Лили, урожай 2026 года. Нежная тонкая кожица, рассыпчатая мякоть. Прекрасно подходит для варки и запекания.', isNew: true },
 
   { id: '22', name: 'Картофель "Королева Анна" мытый', category: 'Картофель', weights: [10], prices: { 10: 800 }, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Мытый, готов к приготовлению. Прекрасно подходит для варки и жарки. Универсальный сорт.', isNew: true, awaiting: true },
