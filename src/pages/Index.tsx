@@ -36,8 +36,9 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Прекрасно подходит для варки и жарки. Универсальный сорт.', awaiting: true },
   { id: '27', name: 'Картофель молодой "Лили" урожай 2026г', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/06a255c1-32fc-4d86-88f8-0fac3d5540b9.jpg', description: 'Молодой картофель сорта Лили, урожай 2026 года. Нежная тонкая кожица, рассыпчатая мякоть. Прекрасно подходит для варки и запекания.', isNew: true },
+  { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], prices: { 5: 750 }, image: 'https://cdn.poehali.dev/files/1001628999.jpg', description: 'Масло приготовленное технологией холодного пресса-без растворителей. Янтарного цвета, густое, с ароматом сои.' },
+  { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Прекрасно подходит для варки и жарки. Универсальный сорт.', awaiting: true },
 
   { id: '22', name: 'Картофель "Королева Анна" мытый', category: 'Картофель', weights: [10], prices: { 10: 800 }, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Мытый, готов к приготовлению. Прекрасно подходит для варки и жарки. Универсальный сорт.', isNew: true, awaiting: true },
   { id: '23', name: 'Картофель "Гала" продовольственный', category: 'Картофель', weights: [34], prices: { 34: 1550 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/ad03397e-5920-4ead-9c21-a33740852c79.jpg', description: 'Продовольственный картофель "Гала" в сетке 34 кг. Ранний высокоурожайный сорт с желтой мякотью. Не разваривается при варке, хорошие вкусовые качества.', awaiting: true },
@@ -54,7 +55,6 @@ const products: Product[] = [
   { id: '19', name: 'Свекла 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002897354.jpg', description: 'Столовая свекла насыщенного бордового цвета. Для борщей, винегретов и салатов.', awaiting: true },
   { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: 'https://cdn.poehali.dev/files/1002520711.jpg', description: 'Хрустящая квашеная капуста по рецепту из ГОСТ 1956 года. В составе только капуста, морковь, соль.', awaiting: true },
   { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1.5], prices: { 1.5: 500 }, image: 'https://cdn.poehali.dev/files/1002520708.jpg', description: 'Дерзкие бочковые огурчики, традиционный рецепт без уксуса. Плотные, хрустящие. Сложно остановиться.', awaiting: true },
-  { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], prices: { 5: 750 }, image: 'https://cdn.poehali.dev/files/1001628999.jpg', description: 'Масло приготовленное технологией холодного пресса-без растворителей. Янтарного цвета, густое, с ароматом сои.' },
 ];
 
 const faqItems = [
