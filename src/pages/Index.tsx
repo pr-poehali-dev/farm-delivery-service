@@ -478,7 +478,7 @@ export default function Index() {
                                 className="flex-1 min-w-[80px] flex flex-col items-center gap-0 h-auto py-2"
                               >
                                 <span className="font-bold">{weightLabel}</span>
-                                <span className="text-xs">{price}₽</span>
+                                {!product.awaiting && <span className="text-xs">{price}₽</span>}
                               </Button>
                             );
                           })}
@@ -539,7 +539,7 @@ export default function Index() {
                                   className="flex flex-col h-auto py-1 px-3"
                                 >
                                   <span>{weightLabel}</span>
-                                  <span className="text-xs opacity-80">{price} ₽{pricePerKg && !product.prices ? `/кг` : ''}</span>
+                                  {!product.awaiting && <span className="text-xs opacity-80">{price} ₽{pricePerKg && !product.prices ? `/кг` : ''}</span>}
                                 </Button>
                               );
                             })}
