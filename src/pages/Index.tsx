@@ -437,7 +437,7 @@ export default function Index() {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12 text-primary">Наш ассортимент</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {products.filter(p => !p.hidden && p.category !== 'Семенной картофель').map((product) => (
+              {products.filter(p => !p.hidden && p.category !== 'Семенной картофель' && !p.awaiting).map((product) => (
                 <Card key={product.id} className={`overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
                   <CardContent className="p-6 flex-1 flex flex-col">
                     <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
@@ -494,6 +494,60 @@ export default function Index() {
                   </CardFooter>
                 </Card>
               ))}
+            </div>
+
+            <div className="mt-12">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="flex-1 h-px bg-border"></div>
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Icon name="Clock" size={16} />
+                  <span className="text-sm font-medium">Ожидание урожая</span>
+                </div>
+                <div className="flex-1 h-px bg-border"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 opacity-60">
+                {products.filter(p => !p.hidden && p.category !== 'Семенной картофель' && p.awaiting).map((product) => (
+                  <Card key={product.id} className="overflow-hidden flex flex-col">
+                    <CardContent className="p-6 flex-1 flex flex-col">
+                      <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
+                        {product.image.startsWith('http') ? (
+                          <img src={product.image} alt={product.name} className="w-full h-full object-cover grayscale" />
+                        ) : (
+                          <span className="text-6xl">{product.image}</span>
+                        )}
+                      </div>
+                      <h3 className="font-bold text-lg mb-2">{product.name}</h3>
+                      <Badge variant="secondary" className="mb-3">{product.category}</Badge>
+                      {product.description && (
+                        <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-1">{product.description}</p>
+                      )}
+                      <div className="space-y-3 mt-auto">
+                        <div>
+                          <Label className="text-xs text-muted-foreground">Выберите вес</Label>
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {product.weights.map((weight) => {
+                              let weightLabel = `${weight} кг`;
+                              if (product.id === '11' && weight === 0.5) weightLabel = '500 мл';
+                              if (product.id === '16' && weight === 5) weightLabel = '5 л';
+                              return (
+                                <Button key={weight} size="sm" variant="outline" disabled className="flex-1 min-w-[80px] flex flex-col items-center gap-0 h-auto py-2">
+                                  <span className="font-bold">{weightLabel}</span>
+                                </Button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                    <CardFooter className="p-4 pt-0">
+                      <Button className="w-full" disabled>
+                        <Icon name="Clock" size={18} className="mr-2" />
+                        Ожидание урожая
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </div>
             </div>
 
             <div className="mt-16" id="seeds">
