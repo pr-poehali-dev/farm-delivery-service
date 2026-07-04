@@ -365,18 +365,20 @@ export default function Index() {
       </header>
 
       <main>
-        <section id="home" className="relative py-24 overflow-hidden bg-gradient-to-b from-accent via-accent/60 to-background">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+        <section 
+          id="home" 
+          className="relative py-24 overflow-hidden bg-cover bg-center"
+          style={{ backgroundImage: `linear-gradient(180deg, rgba(20,30,15,0.55) 0%, rgba(20,30,15,0.7) 100%), url('https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/f150df60-353c-49d5-b8b2-e4dbd9857dd9.jpeg')` }}
+        >
           <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm text-white text-sm font-semibold mb-6 border border-white/20">
                 🌾 Прямо с фермы в Приморье
               </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-primary tracking-tight leading-[1.05]">
+              <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-white tracking-tight leading-[1.05] drop-shadow-lg">
                 Свежие овощи от фермера
               </h1>
-              <p className="text-xl text-muted-foreground mb-8">
+              <p className="text-xl text-white/90 mb-8 drop-shadow">
                 Доставляем натуральные продукты напрямую с полей. Без посредников, без химии, только польза природы.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -423,15 +425,15 @@ export default function Index() {
               <div className="mt-8 flex flex-wrap justify-center gap-8">
                 <div className="text-center">
                   <div className="text-4xl mb-2">🌱</div>
-                  <p className="text-sm font-medium">100% натурально</p>
+                  <p className="text-sm font-medium text-white drop-shadow">100% натурально</p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl mb-2">🚚</div>
-                  <p className="text-sm font-medium">Бесплатная доставка от 20кг</p>
+                  <p className="text-sm font-medium text-white drop-shadow">Бесплатная доставка от 20кг</p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl mb-2">⚡</div>
-                  <p className="text-sm font-medium">Прямо от фермера</p>
+                  <p className="text-sm font-medium text-white drop-shadow">Прямо от фермера</p>
                 </div>
               </div>
             </div>
