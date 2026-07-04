@@ -200,7 +200,16 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen relative"
+      style={{
+        backgroundImage: `url('https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/f150df60-353c-49d5-b8b2-e4dbd9857dd9.jpeg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <header className="sticky top-0 z-50 glass shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -367,8 +376,8 @@ export default function Index() {
       <main>
         <section 
           id="home" 
-          className="relative py-24 overflow-hidden bg-cover bg-center"
-          style={{ backgroundImage: `linear-gradient(180deg, rgba(20,30,15,0.55) 0%, rgba(20,30,15,0.7) 100%), url('https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/f150df60-353c-49d5-b8b2-e4dbd9857dd9.jpeg')` }}
+          className="relative py-24 overflow-hidden"
+          style={{ background: `linear-gradient(180deg, rgba(20,30,15,0.45) 0%, rgba(20,30,15,0.6) 100%)` }}
         >
           <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
@@ -382,11 +391,11 @@ export default function Index() {
                 Доставляем натуральные продукты напрямую с полей. Без посредников, без химии, только польза природы.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" onClick={() => scrollToSection('catalog')} className="text-lg rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
+                <Button size="lg" onClick={() => scrollToSection('catalog')} className="text-lg rounded-full bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-lg shadow-secondary/40 hover:shadow-xl hover:shadow-secondary/50 transition-all">
                   <Icon name="ShoppingBag" size={20} className="mr-2" />
                   Смотреть каталог
                 </Button>
-                <Button size="lg" variant="outline" asChild className="text-lg rounded-full">
+                <Button size="lg" variant="outline" asChild className="text-lg rounded-full bg-white/10 border-white/40 text-white hover:bg-white/20 hover:text-white backdrop-blur-sm">
                   <a href="tel:+79025553558">
                     <Icon name="Phone" size={20} className="mr-2" />
                     Позвонить
@@ -440,7 +449,7 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="catalog" className="py-20">
+        <section id="catalog" className="py-20 bg-background/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Наш ассортимент</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -619,7 +628,7 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="about" className="py-20 bg-accent">
+        <section id="about" className="py-20 bg-accent/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-primary tracking-tight">О нас</h2>
@@ -653,7 +662,7 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="delivery" className="py-20">
+        <section id="delivery" className="py-20 bg-background/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Доставка</h2>
@@ -746,7 +755,7 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="faq" className="py-20 bg-accent">
+        <section id="faq" className="py-20 bg-accent/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Часто задаваемые вопросы</h2>
@@ -766,7 +775,7 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="contacts" className="py-20 bg-background">
+        <section id="contacts" className="py-20 bg-background/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-primary tracking-tight">Контакты</h2>
