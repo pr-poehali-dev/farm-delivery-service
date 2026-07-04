@@ -201,12 +201,12 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
+      <header className="sticky top-0 z-50 glass shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-3xl">🌾</span>
             <div>
-              <div className="text-2xl font-bold text-primary">ФермаВДК</div>
+              <div className="text-2xl font-extrabold text-primary tracking-tight">ФермаВДК</div>
               <a href="tel:+79025553558" className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors md:hidden">
                 <Icon name="Phone" size={12} />
                 8902-555-35-58
@@ -222,21 +222,21 @@ export default function Index() {
             <button onClick={() => scrollToSection('faq')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'faq' ? 'text-primary' : 'text-foreground'}`}>FAQ</button>
             <button onClick={() => scrollToSection('contacts')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'contacts' ? 'text-primary' : 'text-foreground'}`}>Контакты</button>
             <div className="flex items-center gap-2 ml-2">
-              <a href="tel:+79025553558" className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium text-sm">
+              <a href="tel:+79025553558" className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all font-medium text-sm">
                 <Icon name="Phone" size={16} />
                 8902-555-35-58
               </a>
-              <a href="https://wa.me/79025553558" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#25D366] text-white hover:bg-[#22c55e] transition-colors">
+              <a href="https://wa.me/79025553558" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#25D366] text-white hover:bg-[#22c55e] hover:scale-110 transition-all">
                 <Icon name="MessageCircle" size={18} />
               </a>
-              <a href="https://t.me/FermaVDK" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#0088cc] text-white hover:bg-[#0077b5] transition-colors">
+              <a href="https://t.me/FermaVDK" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#0088cc] text-white hover:bg-[#0077b5] hover:scale-110 transition-all">
                 <Icon name="Send" size={18} />
               </a>
             </div>
           </nav>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" className="relative">
+              <Button variant="outline" className="relative rounded-full">
                 <Icon name="ShoppingCart" size={20} />
                 {cart.length > 0 && (
                   <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
@@ -365,21 +365,26 @@ export default function Index() {
       </header>
 
       <main>
-        <section id="home" className="py-20 bg-gradient-to-b from-accent to-background">
-          <div className="container mx-auto px-4">
+        <section id="home" className="relative py-24 overflow-hidden bg-gradient-to-b from-accent via-accent/60 to-background">
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+          <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
+                🌾 Прямо с фермы в Приморье
+              </span>
+              <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-primary tracking-tight leading-[1.05]">
                 Свежие овощи от фермера
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
                 Доставляем натуральные продукты напрямую с полей. Без посредников, без химии, только польза природы.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" onClick={() => scrollToSection('catalog')} className="text-lg">
+                <Button size="lg" onClick={() => scrollToSection('catalog')} className="text-lg rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
                   <Icon name="ShoppingBag" size={20} className="mr-2" />
                   Смотреть каталог
                 </Button>
-                <Button size="lg" variant="outline" asChild className="text-lg">
+                <Button size="lg" variant="outline" asChild className="text-lg rounded-full">
                   <a href="tel:+79025553558">
                     <Icon name="Phone" size={20} className="mr-2" />
                     Позвонить
@@ -435,10 +440,10 @@ export default function Index() {
 
         <section id="catalog" className="py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12 text-primary">Наш ассортимент</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Наш ассортимент</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.filter(p => !p.hidden && p.category !== 'Семенной картофель' && !p.awaiting).map((product) => (
-                <Card key={product.id} className={`overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
+                <Card key={product.id} className={`overflow-hidden card-hover border-none shadow-md rounded-2xl animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
                   <CardContent className="p-6 flex-1 flex flex-col">
                     <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
                       {product.isNew && (
@@ -487,7 +492,7 @@ export default function Index() {
                     </div>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">
-                    <Button className="w-full" onClick={() => !product.awaiting && addToCart(product)} disabled={product.awaiting}>
+                    <Button className="w-full rounded-full" onClick={() => !product.awaiting && addToCart(product)} disabled={product.awaiting}>
                       <Icon name={product.awaiting ? "Clock" : "ShoppingCart"} size={18} className="mr-2" />
                       {product.awaiting ? 'Ожидание урожая' : 'В корзину'}
                     </Button>
@@ -507,7 +512,7 @@ export default function Index() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 opacity-60">
                 {products.filter(p => !p.hidden && p.category !== 'Семенной картофель' && p.awaiting).map((product) => (
-                  <Card key={product.id} className="overflow-hidden flex flex-col">
+                  <Card key={product.id} className="overflow-hidden flex flex-col border-none shadow-md rounded-2xl">
                     <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
                         {product.image.startsWith('http') ? (
@@ -559,7 +564,7 @@ export default function Index() {
               <p className="text-center text-muted-foreground mb-8">Отборный посадочный материал для вашего огорода</p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {products.filter(p => !p.hidden && p.category === 'Семенной картофель').map((product) => (
-                  <Card key={product.id} className={`overflow-hidden hover:shadow-lg transition-shadow animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
+                  <Card key={product.id} className={`overflow-hidden card-hover border-none shadow-md rounded-2xl animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
                     <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
                         {product.isNew && (
@@ -599,7 +604,7 @@ export default function Index() {
                             })}
                           </div>
                         </div>
-                        <Button className="w-full" onClick={() => !product.awaiting && addToCart(product)} disabled={product.awaiting}>
+                        <Button className="w-full rounded-full" onClick={() => !product.awaiting && addToCart(product)} disabled={product.awaiting}>
                           <Icon name={product.awaiting ? "Clock" : "ShoppingCart"} size={16} className="mr-2" />
                           {product.awaiting ? 'Ожидание урожая' : 'В корзину'}
                         </Button>
@@ -615,7 +620,7 @@ export default function Index() {
         <section id="about" className="py-20 bg-accent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl font-bold mb-6 text-primary">О нас</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-primary tracking-tight">О нас</h2>
               <p className="text-lg text-muted-foreground mb-6">
                 Мы — семейная ферма с 11-летним опытом выращивания и доставки экологически чистых овощей во Владивостоке, Артеме, Надеждинске, Большом Камне и Фокино. 
                 Наши поля расположены в экологически чистом районе Приморского края, вдали от промышленных предприятий.
@@ -626,17 +631,17 @@ export default function Index() {
                 Доставляем свежие овощи и заготовки по всему Приморью.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                <div className="p-6 bg-white rounded-lg">
+                <div className="p-6 bg-white rounded-2xl shadow-sm card-hover">
                   <div className="text-4xl mb-3">🏆</div>
                   <h3 className="font-bold mb-2">11 лет опыта</h3>
                   <p className="text-sm text-muted-foreground">Знаем всё о выращивании качественных овощей</p>
                 </div>
-                <div className="p-6 bg-white rounded-lg">
+                <div className="p-6 bg-white rounded-2xl shadow-sm card-hover">
                   <div className="text-4xl mb-3">🌿</div>
                   <h3 className="font-bold mb-2">Без химии</h3>
                   <p className="text-sm text-muted-foreground">Только натуральные удобрения и уход</p>
                 </div>
-                <div className="p-6 bg-white rounded-lg">
+                <div className="p-6 bg-white rounded-2xl shadow-sm card-hover">
                   <div className="text-4xl mb-3">❤️</div>
                   <h3 className="font-bold mb-2">С любовью</h3>
                   <p className="text-sm text-muted-foreground">Заботимся о каждом растении</p>
@@ -649,9 +654,9 @@ export default function Index() {
         <section id="delivery" className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-4xl font-bold text-center mb-12 text-primary">Доставка</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Доставка</h2>
               <div className="space-y-6">
-                <Card className="border-2 border-primary">
+                <Card className="border-2 border-primary rounded-2xl">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="text-4xl">🚚</div>
@@ -742,7 +747,7 @@ export default function Index() {
         <section id="faq" className="py-20 bg-accent">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-4xl font-bold text-center mb-12 text-primary">Часто задаваемые вопросы</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Часто задаваемые вопросы</h2>
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
@@ -762,8 +767,8 @@ export default function Index() {
         <section id="contacts" className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl font-bold mb-6 text-primary">Контакты</h2>
-              <Card className="p-8">
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-primary tracking-tight">Контакты</h2>
+              <Card className="p-8 rounded-2xl shadow-md border-none">
                 <div className="space-y-4">
                   <div className="flex items-center justify-center gap-3">
                     <Icon name="Phone" size={24} className="text-primary" />
