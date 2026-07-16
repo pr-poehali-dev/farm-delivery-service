@@ -215,7 +215,7 @@ export default function Index() {
           <div className="flex items-center gap-2">
             <span className="text-3xl">🌾</span>
             <div>
-              <div className="text-2xl font-extrabold text-primary tracking-tight">ФермаВДК</div>
+              <div className="text-2xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-tight">ФермаВДК</div>
               <a href="tel:+79025553558" className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors md:hidden">
                 <Icon name="Phone" size={12} />
                 8902-555-35-58
@@ -231,7 +231,7 @@ export default function Index() {
             <button onClick={() => scrollToSection('faq')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'faq' ? 'text-primary' : 'text-foreground'}`}>FAQ</button>
             <button onClick={() => scrollToSection('contacts')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'contacts' ? 'text-primary' : 'text-foreground'}`}>Контакты</button>
             <div className="flex items-center gap-2 ml-2">
-              <a href="tel:+79025553558" className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all font-medium text-sm">
+              <a href="tel:+79025553558" className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:shadow-lg hover:shadow-primary/40 hover:scale-105 transition-all font-medium text-sm">
                 <Icon name="Phone" size={16} />
                 8902-555-35-58
               </a>
@@ -451,27 +451,27 @@ export default function Index() {
 
         <section id="catalog" className="py-20 bg-background/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Наш ассортимент</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-tight">Наш ассортимент</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.filter(p => !p.hidden && p.category !== 'Семенной картофель' && !p.awaiting).map((product) => (
-                <Card key={product.id} className={`overflow-hidden card-hover border-none shadow-md rounded-2xl animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
+                <Card key={product.id} className={`group overflow-hidden card-hover border-none shadow-md rounded-3xl animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-secondary shadow-lg shadow-secondary/20' : ''}`}>
                   <CardContent className="p-6 flex-1 flex flex-col">
-                    <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
+                    <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-2xl bg-accent relative">
                       {product.isNew && (
-                        <Badge className="absolute top-2 left-2 z-10 bg-red-500 hover:bg-red-500 text-white font-bold text-sm px-3 py-1 animate-pulse shadow-md">Новинка</Badge>
+                        <Badge className="absolute top-2 left-2 z-10 bg-gradient-to-r from-secondary to-orange-500 text-white font-bold text-sm px-3 py-1 shadow-md">✨ Новинка</Badge>
                       )}
                       {product.image.startsWith('http') ? (
                         <img 
                           src={product.image} 
                           alt={`${product.name} - ${product.description || 'фермерские продукты с доставкой во Владивостоке'}`} 
-                          className="w-full h-full object-cover" 
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                         />
                       ) : (
                         <span className="text-6xl">{product.image}</span>
                       )}
                     </div>
                     <h3 className="font-bold text-lg mb-2">{product.name}</h3>
-                    <Badge variant="secondary" className="mb-3">{product.category}</Badge>
+                    <Badge variant="secondary" className="mb-3 rounded-full">{product.category}</Badge>
                     {product.description && (
                       <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-1">{product.description}</p>
                     )}
@@ -503,7 +503,7 @@ export default function Index() {
                     </div>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">
-                    <Button className="w-full rounded-full" onClick={() => !product.awaiting && addToCart(product)} disabled={product.awaiting}>
+                    <Button className="w-full rounded-full bg-gradient-to-r from-primary to-primary/80 hover:shadow-lg hover:shadow-primary/30 transition-all" onClick={() => !product.awaiting && addToCart(product)} disabled={product.awaiting}>
                       <Icon name={product.awaiting ? "Clock" : "ShoppingCart"} size={18} className="mr-2" />
                       {product.awaiting ? 'Ожидание урожая' : 'В корзину'}
                     </Button>
@@ -575,14 +575,14 @@ export default function Index() {
               <p className="text-center text-muted-foreground mb-8">Отборный посадочный материал для вашего огорода</p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {products.filter(p => !p.hidden && p.category === 'Семенной картофель').map((product) => (
-                  <Card key={product.id} className={`overflow-hidden card-hover border-none shadow-md rounded-2xl animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-red-500 shadow-lg shadow-red-100' : ''}`}>
+                  <Card key={product.id} className={`group overflow-hidden card-hover border-none shadow-md rounded-3xl animate-scale-in flex flex-col ${product.isNew ? 'ring-2 ring-secondary shadow-lg shadow-secondary/20' : ''}`}>
                     <CardContent className="p-6 flex-1 flex flex-col">
-                      <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-lg bg-accent relative">
+                      <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-2xl bg-accent relative">
                         {product.isNew && (
-                          <Badge className="absolute top-2 left-2 z-10 bg-red-500 hover:bg-red-500 text-white font-bold text-sm px-3 py-1 animate-pulse shadow-md">Новинка</Badge>
+                          <Badge className="absolute top-2 left-2 z-10 bg-gradient-to-r from-secondary to-orange-500 text-white font-bold text-sm px-3 py-1 shadow-md">✨ Новинка</Badge>
                         )}
                         {product.image.startsWith('http') ? (
-                          <img src={product.image} alt={`${product.name} - ${product.description || 'семенной картофель'}`} className="w-full h-full object-cover" />
+                          <img src={product.image} alt={`${product.name} - ${product.description || 'семенной картофель'}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                         ) : (
                           <span className="text-6xl">{product.image}</span>
                         )}
@@ -615,7 +615,7 @@ export default function Index() {
                             })}
                           </div>
                         </div>
-                        <Button className="w-full rounded-full" onClick={() => !product.awaiting && addToCart(product)} disabled={product.awaiting}>
+                        <Button className="w-full rounded-full bg-gradient-to-r from-primary to-primary/80 hover:shadow-lg hover:shadow-primary/30 transition-all" onClick={() => !product.awaiting && addToCart(product)} disabled={product.awaiting}>
                           <Icon name={product.awaiting ? "Clock" : "ShoppingCart"} size={16} className="mr-2" />
                           {product.awaiting ? 'Ожидание урожая' : 'В корзину'}
                         </Button>
@@ -631,7 +631,7 @@ export default function Index() {
         <section id="about" className="py-20 bg-accent/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-primary tracking-tight">О нас</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-tight">О нас</h2>
               <p className="text-lg text-muted-foreground mb-6">
                 Мы — семейная ферма с 11-летним опытом выращивания и доставки экологически чистых овощей во Владивостоке, Артеме, Надеждинске, Большом Камне и Фокино. 
                 Наши поля расположены в экологически чистом районе Приморского края, вдали от промышленных предприятий.
@@ -665,7 +665,7 @@ export default function Index() {
         <section id="delivery" className="py-20 bg-background/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Доставка</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-tight">Доставка</h2>
               <div className="space-y-6">
                 <Card className="border-2 border-primary rounded-2xl">
                   <CardContent className="p-6">
@@ -758,7 +758,7 @@ export default function Index() {
         <section id="faq" className="py-20 bg-accent/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary tracking-tight">Часто задаваемые вопросы</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-tight">Часто задаваемые вопросы</h2>
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
@@ -778,7 +778,7 @@ export default function Index() {
         <section id="contacts" className="py-20 bg-background/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-primary tracking-tight">Контакты</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-tight">Контакты</h2>
               <Card className="p-8 rounded-2xl shadow-md border-none">
                 <div className="space-y-4">
                   <div className="flex items-center justify-center gap-3">
@@ -833,14 +833,14 @@ export default function Index() {
       {showScrollTop && (
         <Button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 rounded-full w-12 h-12 shadow-lg"
+          className="fixed bottom-8 right-8 z-40 rounded-full w-12 h-12 shadow-lg bg-gradient-to-r from-primary to-secondary hover:shadow-xl hover:shadow-secondary/40 hover:scale-110 transition-all"
           size="icon"
         >
           <Icon name="ArrowUp" size={24} />
         </Button>
       )}
 
-      <footer className="bg-primary text-primary-foreground py-8">
+      <footer className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-3xl">🌾</span>
