@@ -36,7 +36,7 @@ interface CartItem {
 }
 
 const products: Product[] = [
-  { id: '27', name: 'Картофель молодой "Лили" урожай 2026г', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/d91fc430-7148-49a7-b4a8-78e14508246e.jpeg', description: 'Молодой картофель сорта Лили, урожай 2026 года. Нежная тонкая кожица, рассыпчатая мякоть. Прекрасно подходит для варки и запекания.', isNew: true },
+  { id: '27', name: 'Картофель молодой "Лили" урожай 2026г', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/d91fc430-7148-49a7-b4a8-78e14508246e.jpeg', description: 'Молодой картофель сорта Лили, урожай 2026 года. Нежная тонкая кожица, рассыпчатая мякоть. Прекрасно подходит для варки и запекания.', isNew: true, awaiting: true },
   { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], prices: { 5: 750 }, image: 'https://cdn.poehali.dev/files/1001628999.jpg', description: 'Масло приготовленное технологией холодного пресса-без растворителей. Янтарного цвета, густое, с ароматом сои.' },
   { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [20], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Прекрасно подходит для варки и жарки. Универсальный сорт.', awaiting: true },
 
