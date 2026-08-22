@@ -375,6 +375,27 @@ export default function Index() {
       </header>
 
       <main>
+        <section className="relative overflow-hidden">
+          <div className="container mx-auto px-4 py-6">
+            <div className="rounded-3xl overflow-hidden shadow-lg border border-white/20 bg-white/95 backdrop-blur-sm grid md:grid-cols-2">
+              <div className="relative aspect-[4/3] md:aspect-auto">
+                <img
+                  src="https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/1851bf8f-7434-4bc6-9f41-6e05d753a819.jpeg"
+                  alt="Солёные помидоры по традиционному рецепту"
+                  className="w-full h-full object-cover"
+                />
+                <Badge className="absolute top-3 left-3 z-10 bg-gradient-to-r from-secondary to-orange-500 text-white font-bold text-sm px-3 py-1 shadow-md">✨ Новинка сезона</Badge>
+              </div>
+              <div className="p-6 md:p-8 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl font-extrabold mb-3 text-foreground">Сочные домашние помидоры</h2>
+                <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+                  Солёные по традиционному рецепту с хреном, чесночком и дубовым листиком. Натуральный состав, насыщенный вкус и аппетитный аромат — идеальная закуска к любому столу.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section 
           id="home" 
           className="relative py-24 overflow-hidden"
