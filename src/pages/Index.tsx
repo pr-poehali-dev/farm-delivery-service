@@ -27,6 +27,7 @@ interface Product {
   description?: string;
   isNew?: boolean;
   awaiting?: boolean;
+  tag?: string;
 }
 
 interface CartItem {
@@ -37,7 +38,7 @@ interface CartItem {
 
 const products: Product[] = [
   { id: '12', name: 'Картофель "Королева Анна Супер Элита"', category: 'Картофель', weights: [35], prices: { 35: 1750 }, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Прекрасно подходит для варки и жарки. Универсальный сорт.', isNew: true },
-  { id: '27', name: 'Картофель Лили', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/64821ca3-fbed-4fdd-a1d9-cf7bd1501177.jpeg', description: 'Картофель «Лили» — универсальный сорт, родственный знаменитой «Андретте». Крупные ровные клубни с коричневой шкуркой и жёлтой мякотью отлично подходят для варки, нежного пюре и запекания.', isNew: true },
+  { id: '27', name: 'Картофель Лили', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/64821ca3-fbed-4fdd-a1d9-cf7bd1501177.jpeg', description: 'Картофель «Лили» — универсальный сорт, родственный знаменитой «Андретте». Крупные ровные клубни с коричневой шкуркой и жёлтой мякотью отлично подходят для варки, нежного пюре и запекания.', isNew: true, tag: 'Для варки' },
   { id: '29', name: 'Помидоры солёные, традиционный рецепт', category: 'Заготовки', weights: [3], prices: { 3: 700 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/1851bf8f-7434-4bc6-9f41-6e05d753a819.jpeg', description: 'Сочные домашние помидоры, солёные по традиционному рецепту с хреном, чесночком и дубовым листиком. Натуральный состав, насыщенный вкус и аппетитный аромат.', isNew: true, awaiting: true },
   { id: '28', name: 'Картофель молодой "Беллароза" урожай 2026г', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/533f13b0-061b-437c-8660-ac97d387c565.jpeg', description: 'Молодой картофель сорта Беллароза, урожай 2026 года. Нежная тонкая кожица, рассыпчатая мякоть. Прекрасно подходит для варки и запекания.', isNew: true, awaiting: true },
   { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], prices: { 5: 750 }, image: 'https://cdn.poehali.dev/files/1001628999.jpg', description: 'Масло приготовленное технологией холодного пресса-без растворителей. Янтарного цвета, густое, с ароматом сои.' },
@@ -482,6 +483,9 @@ export default function Index() {
                     <div className="mb-4 aspect-square flex items-center justify-center overflow-hidden rounded-2xl bg-accent relative">
                       {product.isNew && (
                         <Badge className="absolute top-2 left-2 z-10 bg-gradient-to-r from-secondary to-orange-500 text-white font-bold text-sm px-3 py-1 shadow-md">✨ Новинка</Badge>
+                      )}
+                      {product.tag && (
+                        <Badge className="absolute top-2 right-2 z-10 bg-primary text-primary-foreground font-bold text-sm px-3 py-1 shadow-md">{product.tag}</Badge>
                       )}
                       {product.image.startsWith('http') ? (
                         <img 
