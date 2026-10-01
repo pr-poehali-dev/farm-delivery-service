@@ -82,7 +82,15 @@ export default function Index() {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [deliveryMethod, setDeliveryMethod] = useState<'sms' | 'whatsapp'>('sms');
+  const [pendingOrder, setPendingOrder] = useState<{ method: 'sms' | 'whatsapp'; text: string } | null>(() => {
+    try {
+      const saved = localStorage.getItem('pendingOrder');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -179,12 +187,25 @@ export default function Index() {
     
     orderText += `. Итого: ${getTotalPrice()}р`;
 
-    const operatorPhone = '79025553558';
+    const order = { method: deliveryMethod, text: orderText };
+    localStorage.setItem('pendingOrder', JSON.stringify(order));
+    setPendingOrder(order);
+    openOrderChannel(order);
+  };
 
-    const encodedText = encodeURIComponent(orderText);
-    window.open(`https://wa.me/${operatorPhone}?text=${encodedText}`, '_blank');
-    
-    setConfirmOpen(true);
+  const openOrderChannel = (order: { method: 'sms' | 'whatsapp'; text: string }) => {
+    const operatorPhone = '79025553558';
+    const encodedText = encodeURIComponent(order.text);
+    if (order.method === 'sms') {
+      window.location.href = `sms:${operatorPhone}?body=${encodedText}`;
+    } else {
+      window.open(`https://wa.me/${operatorPhone}?text=${encodedText}`, '_blank');
+    }
+  };
+
+  const closePendingOrder = () => {
+    localStorage.removeItem('pendingOrder');
+    setPendingOrder(null);
   };
 
   const confirmOrderSent = () => {
@@ -196,7 +217,7 @@ export default function Index() {
     setCustomerName('');
     setCustomerPhone('');
     setCustomerAddress('');
-    setConfirmOpen(false);
+    closePendingOrder();
   };
 
   return (
@@ -210,14 +231,19 @@ export default function Index() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {confirmOpen && (
+      {pendingOrder && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4">
           <div className="w-full max-w-sm rounded-2xl bg-background p-6 shadow-xl">
-            <h3 className="text-xl font-bold mb-2">Вы отправили заказ в WhatsApp?</h3>
-            <p className="text-sm text-muted-foreground mb-5">Заказ дойдёт до нас, только когда вы нажмёте «Отправить» в WhatsApp.</p>
+            <h3 className="text-xl font-bold mb-2">
+              {pendingOrder.method === 'sms' ? 'Вы отправили SMS с заказом?' : 'Вы отправили заказ в WhatsApp?'}
+            </h3>
+            <p className="text-sm text-muted-foreground mb-5">
+              Заказ дойдёт до нас, только когда вы нажмёте «Отправить». Пока вы не подтвердили, заказ сохранён.
+            </p>
             <div className="flex flex-col gap-2">
               <Button size="lg" onClick={confirmOrderSent}>Да, отправил</Button>
-              <Button size="lg" variant="outline" onClick={() => setConfirmOpen(false)}>Вернуться к заказу</Button>
+              <Button size="lg" variant="secondary" onClick={() => openOrderChannel(pendingOrder)}>Открыть сообщение ещё раз</Button>
+              <Button size="lg" variant="outline" onClick={closePendingOrder}>Вернуться к заказу</Button>
             </div>
           </div>
         </div>
@@ -341,6 +367,35 @@ export default function Index() {
                         <div>
                           <Label htmlFor="address">Адрес доставки</Label>
                           <Textarea id="address" placeholder="Улица, дом, квартира" rows={3} value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} />
+                        </div>
+                        <div>
+                          <Label>Как отправить заказ</Label>
+                          <div className="flex gap-2 mt-1">
+                            <Button
+                              type="button"
+                              variant={deliveryMethod === 'sms' ? 'default' : 'outline'}
+                              className="flex-1 text-sm"
+                              onClick={() => setDeliveryMethod('sms')}
+                            >
+                              <Icon name="MessageSquare" size={16} className="mr-1" />
+                              SMS
+                            </Button>
+                            <Button
+                              type="button"
+                              variant={deliveryMethod === 'whatsapp' ? 'default' : 'outline'}
+                              className="flex-1 text-sm"
+                              onClick={() => setDeliveryMethod('whatsapp')}
+                            >
+                              <Icon name="MessageCircle" size={16} className="mr-1" />
+                              WhatsApp
+                            </Button>
+                          </div>
+                          {deliveryMethod === 'sms' && (
+                            <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
+                              <Icon name="Smartphone" size={12} />
+                              SMS-заказ работает только с мобильного телефона
+                            </p>
+                          )}
                         </div>
                       </div>
                       <Button className="w-full" size="lg" onClick={handleOrderSubmit} disabled={!isMinOrderMet()}>
