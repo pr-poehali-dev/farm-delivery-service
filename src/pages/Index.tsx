@@ -260,10 +260,6 @@ export default function Index() {
             <span className="text-3xl">🌾</span>
             <div>
               <div className="text-2xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-tight">ФермаВДК</div>
-              <a href="tel:+79025553558" className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors md:hidden">
-                <Icon name="Phone" size={12} />
-                8902-555-35-58
-              </a>
             </div>
           </div>
           <nav className="hidden md:flex items-center gap-6">
@@ -277,7 +273,7 @@ export default function Index() {
             <div className="flex items-center gap-2 ml-2">
               <a href="tel:+79025553558" className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:shadow-lg hover:shadow-primary/40 hover:scale-105 transition-all font-medium text-sm">
                 <Icon name="Phone" size={16} />
-                8902-555-35-58
+                Позвонить 8-902-555-35-58
               </a>
               <a href="https://wa.me/79025553558" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#25D366] text-white hover:bg-[#22c55e] hover:scale-110 transition-all">
                 <Icon name="MessageCircle" size={18} />
@@ -287,6 +283,10 @@ export default function Index() {
               </a>
             </div>
           </nav>
+          <a href="tel:+79025553558" className="md:hidden flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-medium text-sm shadow-md">
+            <Icon name="Phone" size={16} />
+            Позвонить
+          </a>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" className="relative rounded-full">
