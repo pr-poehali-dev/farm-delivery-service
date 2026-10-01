@@ -82,6 +82,7 @@ export default function Index() {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -183,15 +184,19 @@ export default function Index() {
     const encodedText = encodeURIComponent(orderText);
     window.open(`https://wa.me/${operatorPhone}?text=${encodedText}`, '_blank');
     
+    setConfirmOpen(true);
+  };
+
+  const confirmOrderSent = () => {
     toast.success('Спасибо за заказ! Оператор свяжется с вами в ближайшее время! В связи с нестабильной связью, если вы не получили от нас ответа, перезвоните пожалуйста: 8902-555-35-58', {
       duration: 10000,
     });
-    
     setCart([]);
     localStorage.removeItem('cart');
     setCustomerName('');
     setCustomerPhone('');
     setCustomerAddress('');
+    setConfirmOpen(false);
   };
 
   return (
@@ -205,6 +210,18 @@ export default function Index() {
         backgroundRepeat: 'no-repeat',
       }}
     >
+      {confirmOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4">
+          <div className="w-full max-w-sm rounded-2xl bg-background p-6 shadow-xl">
+            <h3 className="text-xl font-bold mb-2">Вы отправили заказ в WhatsApp?</h3>
+            <p className="text-sm text-muted-foreground mb-5">Заказ дойдёт до нас, только когда вы нажмёте «Отправить» в WhatsApp.</p>
+            <div className="flex flex-col gap-2">
+              <Button size="lg" onClick={confirmOrderSent}>Да, отправил</Button>
+              <Button size="lg" variant="outline" onClick={() => setConfirmOpen(false)}>Вернуться к заказу</Button>
+            </div>
+          </div>
+        </div>
+      )}
       <header className="sticky top-0 z-50 glass shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
