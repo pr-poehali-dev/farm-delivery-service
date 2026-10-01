@@ -407,6 +407,12 @@ export default function Index() {
                       <Button className="w-full" size="lg" onClick={handleOrderSubmit} disabled={!isMinOrderMet()}>
                         Оформить заказ
                       </Button>
+                      <Button className="w-full mt-2" size="lg" variant="outline" asChild>
+                        <a href="tel:+79025553558">
+                          <Icon name="Phone" size={16} className="mr-2" />
+                          Позвонить оператору 8-902-555-35-58
+                        </a>
+                      </Button>
                       <p className="text-xs text-muted-foreground text-center mt-2">🚚 Бесплатная доставка в квартиру</p>
                     </div>
                   </>
