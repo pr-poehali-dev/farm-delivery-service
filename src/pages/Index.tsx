@@ -82,7 +82,6 @@ export default function Index() {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [deliveryMethod, setDeliveryMethod] = useState<'sms' | 'whatsapp'>('sms');
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -181,15 +180,8 @@ export default function Index() {
 
     const operatorPhone = '79025553558';
 
-    if (deliveryMethod === 'sms') {
-      const encodedText = encodeURIComponent(orderText);
-      window.location.href = `sms:${operatorPhone}?body=${encodedText}`;
-    }
-
-    if (deliveryMethod === 'whatsapp') {
-      const encodedText = encodeURIComponent(orderText);
-      window.open(`https://wa.me/${operatorPhone}?text=${encodedText}`, '_blank');
-    }
+    const encodedText = encodeURIComponent(orderText);
+    window.open(`https://wa.me/${operatorPhone}?text=${encodedText}`, '_blank');
     
     toast.success('Спасибо за заказ! Оператор свяжется с вами в ближайшее время! В связи с нестабильной связью, если вы не получили от нас ответа, перезвоните пожалуйста: 8902-555-35-58', {
       duration: 10000,
@@ -332,35 +324,6 @@ export default function Index() {
                         <div>
                           <Label htmlFor="address">Адрес доставки</Label>
                           <Textarea id="address" placeholder="Улица, дом, квартира" rows={3} value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} />
-                        </div>
-                        <div>
-                          <Label>Способ связи с оператором</Label>
-                          <div className="flex gap-2 mt-1">
-                            <Button 
-                              type="button"
-                              variant={deliveryMethod === 'sms' ? 'default' : 'outline'} 
-                              className="flex-1 text-sm"
-                              onClick={() => setDeliveryMethod('sms')}
-                            >
-                              <Icon name="MessageSquare" size={16} className="mr-1" />
-                              SMS
-                            </Button>
-                            <Button 
-                              type="button"
-                              variant={deliveryMethod === 'whatsapp' ? 'default' : 'outline'} 
-                              className="flex-1 text-sm"
-                              onClick={() => setDeliveryMethod('whatsapp')}
-                            >
-                              <Icon name="MessageCircle" size={16} className="mr-1" />
-                              WhatsApp
-                            </Button>
-                          </div>
-                          {deliveryMethod === 'sms' && (
-                            <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                              <Icon name="Smartphone" size={12} />
-                              SMS-заказ работает только с мобильного телефона
-                            </p>
-                          )}
                         </div>
                       </div>
                       <Button className="w-full" size="lg" onClick={handleOrderSubmit} disabled={!isMinOrderMet()}>
