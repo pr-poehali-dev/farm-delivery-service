@@ -243,7 +243,13 @@ export default function Index() {
             <div className="flex flex-col gap-2">
               <Button size="lg" onClick={confirmOrderSent}>Да, отправил</Button>
               <Button size="lg" variant="secondary" onClick={() => openOrderChannel(pendingOrder)}>Открыть сообщение ещё раз</Button>
-              <Button size="lg" variant="outline" onClick={closePendingOrder}>Вернуться к заказу</Button>
+              <Button size="lg" variant="outline" asChild>
+                <a href="tel:+79025553558">
+                  <Icon name="Phone" size={16} className="mr-2" />
+                  Позвонить оператору 8-902-555-35-58
+                </a>
+              </Button>
+              <Button size="lg" variant="ghost" onClick={closePendingOrder}>Вернуться к заказу</Button>
             </div>
           </div>
         </div>
