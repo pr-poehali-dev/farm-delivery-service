@@ -1,0 +1,11 @@
+{
+  "tests": [
+    {
+      "name": "Missing message",
+      "method": "POST",
+      "path": "/",
+      "body": {},
+      "expectedStatus": 400
+    }
+  ]
+}

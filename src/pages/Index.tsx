@@ -188,9 +188,24 @@ export default function Index() {
     orderText += `. Итого: ${getTotalPrice()}р`;
 
     const order = { method: deliveryMethod, text: orderText };
-    localStorage.setItem('pendingOrder', JSON.stringify(order));
-    setPendingOrder(order);
-    openOrderChannel(order);
+    fetch('https://functions.poehali.dev/35bc603e-5247-4275-99a4-760b80fd4dc3', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: orderText })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          confirmOrderSent();
+        } else {
+          throw new Error('send failed');
+        }
+      })
+      .catch(() => {
+        localStorage.setItem('pendingOrder', JSON.stringify(order));
+        setPendingOrder(order);
+        openOrderChannel(order);
+      });
   };
 
   const openOrderChannel = (order: { method: 'sms' | 'whatsapp'; text: string }) => {
