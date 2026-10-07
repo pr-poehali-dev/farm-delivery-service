@@ -188,7 +188,7 @@ export default function Index() {
     orderText += `. Итого: ${getTotalPrice()}р`;
 
     const order = { method: deliveryMethod, text: orderText };
-    fetch('https://functions.poehali.dev/35bc603e-5247-4275-99a4-760b80fd4dc3', {
+    fetch('https://functions.poehali.dev/f26cdb87-1963-44cc-ba6c-0abace57a592', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: orderText })
