@@ -31,8 +31,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     if not message:
         return {'statusCode': 400, 'headers': HEADERS, 'body': json.dumps({'error': 'message is required'})}
 
-    user = os.environ.get('SMTP_USER')
-    password = os.environ.get('SMTP_PASSWORD')
+    user = os.environ.get('MAIL_LOGIN')
+    password = os.environ.get('MAIL_APP_PASSWORD')
     if not user or not password:
         return {'statusCode': 500, 'headers': HEADERS, 'body': json.dumps({'success': False, 'error': 'Mail not configured'})}
 
