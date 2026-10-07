@@ -370,59 +370,7 @@ export default function Index() {
                           Минимальный заказ — от 20 кг или от 2 000 ₽. Сейчас: {getTotalWeight()} кг / {getTotalPrice()} ₽
                         </div>
                       )}
-                      <div className="space-y-3 mb-4">
-                        <div>
-                          <Label htmlFor="name">Имя</Label>
-                          <Input id="name" placeholder="Введите ваше имя" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
-                        </div>
-                        <div>
-                          <Label htmlFor="phone">Телефон</Label>
-                          <InputMask 
-                            mask="+7 (999) 999-99-99" 
-                            value={customerPhone} 
-                            onChange={(e) => setCustomerPhone(e.target.value)}
-                          >
-                            {(inputProps: React.InputHTMLAttributes<HTMLInputElement>) => <Input {...inputProps} id="phone" placeholder="+7 (___) ___-__-__" />}
-                          </InputMask>
-                        </div>
-                        <div>
-                          <Label htmlFor="address">Адрес доставки</Label>
-                          <Textarea id="address" placeholder="Улица, дом, квартира" rows={3} value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} />
-                        </div>
-                        <div>
-                          <Label>Как отправить заказ</Label>
-                          <div className="flex gap-2 mt-1">
-                            <Button
-                              type="button"
-                              variant={deliveryMethod === 'sms' ? 'default' : 'outline'}
-                              className="flex-1 text-sm"
-                              onClick={() => setDeliveryMethod('sms')}
-                            >
-                              <Icon name="MessageSquare" size={16} className="mr-1" />
-                              SMS
-                            </Button>
-                            <Button
-                              type="button"
-                              variant={deliveryMethod === 'whatsapp' ? 'default' : 'outline'}
-                              className="flex-1 text-sm"
-                              onClick={() => setDeliveryMethod('whatsapp')}
-                            >
-                              <Icon name="MessageCircle" size={16} className="mr-1" />
-                              WhatsApp
-                            </Button>
-                          </div>
-                          {deliveryMethod === 'sms' && (
-                            <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                              <Icon name="Smartphone" size={12} />
-                              SMS-заказ работает только с мобильного телефона
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                      <Button className="w-full" size="lg" onClick={handleOrderSubmit} disabled={!isMinOrderMet()}>
-                        Оформить заказ
-                      </Button>
-                      <Button className="w-full mt-2" size="lg" variant="outline" asChild>
+                      <Button className="w-full" size="lg" variant="outline" asChild>
                         <a href="tel:+79025553558">
                           <Icon name="Phone" size={16} className="mr-2" />
                           Позвонить оператору 8-902-555-35-58
