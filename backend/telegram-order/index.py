@@ -1,6 +1,7 @@
 import json
 import os
 import urllib.request
+import urllib.error
 from typing import Dict, Any
 
 HEADERS = {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
@@ -42,8 +43,12 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     try:
         with urllib.request.urlopen(req, timeout=4) as resp:
             result = json.loads(resp.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode('utf-8', 'ignore')
+        print(f'Telegram HTTP {e.code}: {detail}')
+        return {'statusCode': 502, 'headers': HEADERS, 'body': json.dumps({'success': False, 'telegram_status': e.code, 'telegram_error': detail})}
     except Exception as e:
-        print(f'Telegram ERROR: {type(e).__name__}')
-        return {'statusCode': 502, 'headers': HEADERS, 'body': json.dumps({'success': False})}
+        print(f'Telegram ERROR: {type(e).__name__}: {e}')
+        return {'statusCode': 502, 'headers': HEADERS, 'body': json.dumps({'success': False, 'error': type(e).__name__, 'reason': str(e)})}
 
     return {'statusCode': 200, 'headers': HEADERS, 'body': json.dumps({'success': bool(result.get('ok'))})}
