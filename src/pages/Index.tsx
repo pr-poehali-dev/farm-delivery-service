@@ -438,15 +438,6 @@ export default function Index() {
               </div>
               <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center max-w-2xl mx-auto">
                 <a 
-                  href="https://chat.whatsapp.com/KUNWRMPsweQ7K6YIOj7TTL?mode=wwt" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-lg hover:bg-[#22c55e] transition-colors text-sm font-medium"
-                >
-                  <Icon name="MessageCircle" size={18} />
-                  <span>Группа WhatsApp</span>
-                </a>
-                <a 
                   href="https://max.ru/id251004790824_biz" 
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -454,15 +445,6 @@ export default function Index() {
                 >
                   <Icon name="MessageSquare" size={18} />
                   <span>Канал MAX</span>
-                </a>
-                <a 
-                  href="https://t.me/FermaVladivostok" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b5] transition-colors text-sm font-medium"
-                >
-                  <Icon name="Send" size={18} />
-                  <span>Канал Telegram</span>
                 </a>
               </div>
               <div className="mt-8 flex flex-wrap justify-center gap-8">
@@ -832,15 +814,6 @@ export default function Index() {
                     <p className="text-muted-foreground mb-6">Работаем ежедневно с 9:00 до 19:00</p>
                     <div className="flex flex-col gap-3">
                       <a 
-                        href="https://chat.whatsapp.com/KUNWRMPsweQ7K6YIOj7TTL?mode=wwt" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#22c55e] transition-colors"
-                      >
-                        <Icon name="MessageCircle" size={20} />
-                        <span className="font-semibold">Группа WhatsApp</span>
-                      </a>
-                      <a 
                         href="https://max.ru/join/A0Im7QSZxCi4-ehXt_uTDyD12VSnqUwiYonh_uM3KJI" 
                         target="_blank" 
                         rel="noopener noreferrer"
@@ -848,15 +821,6 @@ export default function Index() {
                       >
                         <Icon name="MessageSquare" size={20} />
                         <span className="font-semibold">Чат MAX</span>
-                      </a>
-                      <a 
-                        href="https://t.me/FermaVladivostok" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-6 py-3 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b5] transition-colors"
-                      >
-                        <Icon name="Send" size={20} />
-                        <span className="font-semibold">Канал Telegram</span>
                       </a>
                     </div>
                   </div>
