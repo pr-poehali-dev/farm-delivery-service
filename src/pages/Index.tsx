@@ -27,6 +27,7 @@ interface Product {
   description?: string;
   isNew?: boolean;
   awaiting?: boolean;
+  hidden?: boolean;
   tag?: string;
 }
 
@@ -44,11 +45,11 @@ const products: Product[] = [
 
   { id: '22', name: 'Картофель "Королева Анна" мытый', category: 'Картофель', weights: [10], prices: { 10: 800 }, image: 'https://cdn.poehali.dev/files/1002767412.jpg', description: 'Мытый, готов к приготовлению. Прекрасно подходит для варки и жарки. Универсальный сорт.', isNew: true, awaiting: true },
   { id: '23', name: 'Картофель "Гала" продовольственный', category: 'Картофель', weights: [34], prices: { 34: 1550 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/ad03397e-5920-4ead-9c21-a33740852c79.jpg', description: 'Продовольственный картофель "Гала" в сетке 34 кг. Ранний высокоурожайный сорт с желтой мякотью. Не разваривается при варке, хорошие вкусовые качества.', awaiting: true },
-  { id: '26', name: 'Картофель "Гала" семенной, 1-я репродукция', category: 'Семенной картофель', weights: [10], prices: { 10: 400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/ad03397e-5920-4ead-9c21-a33740852c79.jpg', description: 'Семенной картофель "Гала" 1-й репродукции. Ранний высокоурожайный сорт с жёлтой мякотью. Не разваривается при варке, отличные вкусовые качества.', awaiting: true },
+  { id: '26', name: 'Картофель "Гала" семенной, 1-я репродукция', category: 'Семенной картофель', weights: [10], prices: { 10: 400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/ad03397e-5920-4ead-9c21-a33740852c79.jpg', description: 'Семенной картофель "Гала" 1-й репродукции. Ранний высокоурожайный сорт с жёлтой мякотью. Не разваривается при варке, отличные вкусовые качества.', awaiting: true, hidden: true },
   { id: '25', name: 'Картофель Балтик роуз', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/733d80c1-c33b-482b-ba2a-b7523e83b2d6.jpg', description: '"Балтик Роуз" — поздний сорт для длительного хранения. Яркая розовая кожура, насыщенно жёлтая мякоть. Отличные вкусовые качества' },
   { id: '30', name: 'Картофель Посейдон', category: 'Картофель', weights: [20], prices: { 20: 1400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/10e8b30d-dc83-4f66-a2aa-9a9895bab0b8.jpg', description: 'Картофель сорта Посейдон. Фасовка 20 кг.', awaiting: true },
   { id: '31', name: 'Картофель Лотос', category: 'Картофель', weights: [20], prices: { 20: 1200 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/675171e3-c0ae-4eb1-a518-a0a5feb95a84.jpg', description: 'Рассыпчатый сорт с насыщенным ароматом картофеля. Кремовая мякоть. Сетка 20 кг.' },
-  { id: '20', name: 'Картофель "Коломбо" семенной', category: 'Семенной картофель', weights: [10, 20], pricePerKg: 40, image: 'https://cdn.poehali.dev/files/1002897457.jpg', description: 'Семенной картофель "Коломбо" - ранний, высокоурожайный сорт столового назначения. Период созревания от посадки до сбора урожая 70-80 дней. Преимущество сорта: высокая урожайность, имеет хорошие вкусовые качества, не разваривается при варке. Клубни округло-овальной формы. Кожура светло-жёлтого цвета с мелкими глазками, мякоть светло-жёлтого цвета.', awaiting: true },
+  { id: '20', name: 'Картофель "Коломбо" семенной', category: 'Семенной картофель', weights: [10, 20], pricePerKg: 40, image: 'https://cdn.poehali.dev/files/1002897457.jpg', description: 'Семенной картофель "Коломбо" - ранний, высокоурожайный сорт столового назначения. Период созревания от посадки до сбора урожая 70-80 дней. Преимущество сорта: высокая урожайность, имеет хорошие вкусовые качества, не разваривается при варке. Клубни округло-овальной формы. Кожура светло-жёлтого цвета с мелкими глазками, мякоть светло-жёлтого цвета.', awaiting: true, hidden: true },
 
   { id: '24', name: 'Картофель "Ла Страда"', category: 'Картофель', weights: [35], prices: { 35: 1600 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/78d78ab0-0272-42ad-ae99-25e235eba3d1.jpg', description: 'Крупный картофель, с белой мякотью и насыщенным вкусом и ароматом. Кремовая текстура.', isNew: true, tag: 'Для жарки' },
   { id: '13', name: 'Сборная сетка 10кг: Лук + Морковь + Свекла', category: 'Сборные сетки', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002897358.jpg', description: 'Готовый набор основных овощей для борща и других блюд. Экономия времени и денег.', awaiting: true },
@@ -281,7 +282,6 @@ export default function Index() {
           <nav className="hidden md:flex items-center gap-6">
             <button onClick={() => scrollToSection('home')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'home' ? 'text-primary' : 'text-foreground'}`}>Главная</button>
             <button onClick={() => scrollToSection('catalog')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'catalog' ? 'text-primary' : 'text-foreground'}`}>Каталог</button>
-            <button onClick={() => scrollToSection('seeds')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'seeds' ? 'text-primary' : 'text-foreground'}`}>Семенной</button>
             <button onClick={() => scrollToSection('about')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'about' ? 'text-primary' : 'text-foreground'}`}>О нас</button>
             <button onClick={() => scrollToSection('delivery')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'delivery' ? 'text-primary' : 'text-foreground'}`}>Доставка</button>
             <button onClick={() => scrollToSection('faq')} className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === 'faq' ? 'text-primary' : 'text-foreground'}`}>FAQ</button>
@@ -580,7 +580,7 @@ export default function Index() {
               </div>
             </div>
 
-            <div className="mt-16" id="seeds">
+            <div className="mt-16 hidden" id="seeds">
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-px flex-1 bg-border" />
                 <h3 className="text-2xl font-bold text-primary whitespace-nowrap">🌱 Семенной картофель</h3>
