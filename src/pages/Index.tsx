@@ -642,6 +642,21 @@ export default function Index() {
           </div>
         </section>
 
+        <section id="vladivostok" className="py-16 bg-background/90 backdrop-blur-sm">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-center text-foreground">Купить картофель во Владивостоке с доставкой</h2>
+            <p className="text-lg text-muted-foreground mb-4">
+              ФермаВДК выращивает картофель в Приморском крае и привозит его напрямую от фермера: без посредников, свежий, без химии. Купить картофель во Владивостоке можно мешками от 10 до 35 кг по ценам производителя.
+            </p>
+            <p className="text-lg text-muted-foreground mb-4">
+              Доставляем по Владивостоку, Артёму, Надеждинскому району, Большому Камню и Фокино. Бесплатная доставка при заказе от 20 кг, привезём прямо до двери и поможем поднять на этаж. Если заказ по пути нашего маршрута, можем привезти и меньше.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              В каталоге сорта для варки, жарки и пюре: Беллароза, Королева Анна, Ла Страда, Лотос, Балтик роуз. Оформите заказ на сайте или позвоните по телефону 8-902-555-35-58, и мы согласуем удобное время доставки.
+            </p>
+          </div>
+        </section>
+
         <section id="about" className="py-20 bg-accent/90 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
