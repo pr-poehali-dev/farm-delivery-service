@@ -57,7 +57,7 @@ const products: Product[] = [
   { id: '17', name: 'Лук 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002897347.jpg', description: 'Отборный репчатый лук. Крупный, плотный, долго хранится.', awaiting: true },
   { id: '18', name: 'Морковь 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002897342.jpg', description: 'Сладкая сочная морковь. Богата каротином и витаминами.', awaiting: true },
   { id: '19', name: 'Свекла 10кг', category: 'Овощи', weights: [10], pricePerKg: 70, image: 'https://cdn.poehali.dev/files/1002897354.jpg', description: 'Столовая свекла насыщенного бордового цвета. Для борщей, винегретов и салатов.', awaiting: true },
-  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], pricePerKg: 200, image: 'https://cdn.poehali.dev/files/1002520711.jpg', description: 'Хрустящая квашеная капуста по рецепту из ГОСТ 1956 года. В составе только капуста, морковь, соль.', awaiting: true },
+  { id: '9', name: 'Капуста квашеная', category: 'Заготовки', weights: [2], prices: { 2: 450 }, image: 'https://cdn.poehali.dev/files/1002520711.jpg', description: 'Хрустящая квашеная капуста по рецепту из ГОСТ 1956 года. В составе только капуста, морковь, соль.' },
   { id: '10', name: 'Огурчики бочковые', category: 'Заготовки', weights: [1.5], prices: { 1.5: 500 }, image: 'https://cdn.poehali.dev/files/1002520708.jpg', description: 'Дерзкие бочковые огурчики, традиционный рецепт без уксуса. Плотные, хрустящие. Сложно остановиться.' },
 ];
 
