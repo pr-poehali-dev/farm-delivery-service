@@ -53,6 +53,7 @@ const products: Product[] = [
   { id: '29', name: 'Помидоры солёные, традиционный рецепт', category: 'Соленья', weights: [1], prices: { 1: 450 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/1851bf8f-7434-4bc6-9f41-6e05d753a819.jpeg', description: 'Сочные домашние помидоры, солёные по традиционному рецепту с хреном, чесночком и дубовым листиком. Натуральный состав, насыщенный вкус и аппетитный аромат.', isNew: true },
   { id: '9', name: 'Капуста квашеная', category: 'Соленья', weights: [2], prices: { 2: 450 }, image: 'https://cdn.poehali.dev/files/1002520711.jpg', description: 'Хрустящая квашеная капуста по рецепту из ГОСТ 1956 года. В составе только капуста, морковь, соль.' },
   { id: '10', name: 'Огурчики бочковые', category: 'Соленья', weights: [1.5], prices: { 1.5: 500 }, image: 'https://cdn.poehali.dev/files/1002520708.jpg', description: 'Дерзкие бочковые огурчики, традиционный рецепт без уксуса. Плотные, хрустящие. Сложно остановиться.' },
+  { id: '30', name: 'Аджика домашняя с хреном и чесноком', category: 'Соленья', weights: [0.5], prices: { 0.5: 350 }, image: 'https://cdn.poehali.dev/projects/***/files/f82abb98-abaa-4b15-936c-8ec46dd8d4b8.jpg', description: 'Домашняя аджика с хреном и чесноком, 500 мл. Острая, ароматная, натуральный состав.', isNew: true },
   { id: '16', name: 'Масло соевое', category: 'Заготовки', weights: [5], prices: { 5: 750 }, image: 'https://cdn.poehali.dev/files/1001628999.jpg', description: 'Масло приготовленное технологией холодного пресса-без растворителей. Янтарного цвета, густое, с ароматом сои.' },
   { id: '26', name: 'Картофель "Гала" семенной, 1-я репродукция', category: 'Семенной картофель', weights: [10], prices: { 10: 400 }, image: 'https://cdn.poehali.dev/projects/37d25151-dc28-4c37-b88b-0704483fea6f/bucket/ad03397e-5920-4ead-9c21-a33740852c79.jpg', description: 'Семенной картофель "Гала" 1-й репродукции. Ранний высокоурожайный сорт с жёлтой мякотью. Не разваривается при варке, отличные вкусовые качества.', awaiting: true, hidden: true },
   { id: '20', name: 'Картофель "Коломбо" семенной', category: 'Семенной картофель', weights: [10, 20], pricePerKg: 40, image: 'https://cdn.poehali.dev/files/1002897457.jpg', description: 'Семенной картофель "Коломбо" - ранний, высокоурожайный сорт столового назначения. Период созревания от посадки до сбора урожая 70-80 дней. Преимущество сорта: высокая урожайность, имеет хорошие вкусовые качества, не разваривается при варке. Клубни округло-овальной формы. Кожура светло-жёлтого цвета с мелкими глазками, мякоть светло-жёлтого цвета.', awaiting: true, hidden: true },
@@ -183,7 +184,7 @@ export default function Index() {
     
     cart.forEach((item, index) => {
       let weightLabel = `${item.weight}кг`;
-      if (item.product.id === '11' && item.weight === 0.5) weightLabel = '500мл';
+      if ((item.product.id === '11' || item.product.id === '30') && item.weight === 0.5) weightLabel = '500мл';
       if (item.product.id === '16' && item.weight === 5) weightLabel = '5л';
       orderText += `${item.product.name} ${weightLabel}x${item.quantity}=${getPrice(item.product, item.weight) * item.quantity}р`;
       if (index < cart.length - 1) orderText += ', ';
@@ -319,7 +320,7 @@ export default function Index() {
                         </div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-sm">{item.product.name}</h4>
-                          <p className="text-sm text-muted-foreground">{item.product.id === '11' && item.weight === 0.5 ? '500 мл' : `${item.weight} кг`} × {getPrice(item.product, item.weight)} ₽</p>
+                          <p className="text-sm text-muted-foreground">{(item.product.id === '11' || item.product.id === '30') && item.weight === 0.5 ? '500 мл' : `${item.weight} кг`} × {getPrice(item.product, item.weight)} ₽</p>
                           <div className="flex items-center gap-2 mt-2">
                             <Button size="sm" variant="outline" onClick={() => updateQuantity(item.product.id, item.weight, item.quantity - 1)}>
                               <Icon name="Minus" size={14} />
@@ -512,7 +513,7 @@ export default function Index() {
                             const price = getPrice(product, weight);
                             const pricePerKg = product.prices && product.prices[weight] ? Math.round(product.prices[weight] / weight) : product.pricePerKg;
                             let weightLabel = `${weight} кг`;
-                            if (product.id === '11' && weight === 0.5) weightLabel = '500 мл';
+                            if ((product.id === '11' || product.id === '30') && weight === 0.5) weightLabel = '500 мл';
                             if (product.id === '16' && weight === 5) weightLabel = '5 л';
                             return (
                               <Button
@@ -572,7 +573,7 @@ export default function Index() {
                           <div className="flex flex-wrap gap-2 mt-2">
                             {product.weights.map((weight) => {
                               let weightLabel = `${weight} кг`;
-                              if (product.id === '11' && weight === 0.5) weightLabel = '500 мл';
+                              if ((product.id === '11' || product.id === '30') && weight === 0.5) weightLabel = '500 мл';
                               if (product.id === '16' && weight === 5) weightLabel = '5 л';
                               return (
                                 <Button key={weight} size="sm" variant="outline" disabled className="flex-1 min-w-[80px] flex flex-col items-center gap-0 h-auto py-2">
