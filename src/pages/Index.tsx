@@ -76,7 +76,7 @@ export default function Index() {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [deliveryMethod, setDeliveryMethod] = useState<'sms' | 'whatsapp'>('sms');
+  const [isMobile, setIsMobile] = useState(false);
   const [pendingOrder, setPendingOrder] = useState<{ method: 'sms' | 'whatsapp'; text: string } | null>(null);
 
   useEffect(() => {
@@ -89,6 +89,10 @@ export default function Index() {
       if (savedOrder) setPendingOrder(JSON.parse(savedOrder));
     } catch { /* ignore */ }
     setStorageLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    setIsMobile(/Android|iPhone|iPad|iPod|Mobile|Opera Mini|IEMobile/i.test(navigator.userAgent));
   }, []);
 
   useEffect(() => {
@@ -165,7 +169,7 @@ export default function Index() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleOrderSubmit = () => {
+  const handleOrderSubmit = (method: 'sms' | 'whatsapp') => {
     if (!isMinOrderMet()) {
       toast.error('Минимальный заказ — от 20 кг или от 2 000 ₽');
       return;
@@ -187,25 +191,10 @@ export default function Index() {
     
     orderText += `. Итого: ${getTotalPrice()}р`;
 
-    const order = { method: deliveryMethod, text: orderText };
-    fetch('https://functions.poehali.dev/f26cdb87-1963-44cc-ba6c-0abace57a592', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: orderText })
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          confirmOrderSent();
-        } else {
-          throw new Error('send failed');
-        }
-      })
-      .catch(() => {
-        localStorage.setItem('pendingOrder', JSON.stringify(order));
-        setPendingOrder(order);
-        openOrderChannel(order);
-      });
+    const order = { method, text: orderText };
+    localStorage.setItem('pendingOrder', JSON.stringify(order));
+    setPendingOrder(order);
+    openOrderChannel(order);
   };
 
   const openOrderChannel = (order: { method: 'sms' | 'whatsapp'; text: string }) => {
@@ -363,12 +352,40 @@ export default function Index() {
                           Минимальный заказ — от 20 кг или от 2 000 ₽. Сейчас: {getTotalWeight()} кг / {getTotalPrice()} ₽
                         </div>
                       )}
-                      <Button className="w-full" size="lg" variant="outline" asChild>
-                        <a href="tel:+79025553558">
-                          <Icon name="Phone" size={16} className="mr-2" />
-                          Позвонить оператору 8-902-555-35-58
-                        </a>
-                      </Button>
+                      {isMobile ? (
+                        <div className="space-y-3">
+                          <div>
+                            <Label htmlFor="order-name">Ваше имя</Label>
+                            <Input id="order-name" value={customerName} onChange={(e) => setCustomerName(e.target.value)} placeholder="Иван" />
+                          </div>
+                          <div>
+                            <Label htmlFor="order-phone">Телефон</Label>
+                            <Input id="order-phone" type="tel" value={customerPhone} onChange={(e) => setCustomerPhone(e.target.value)} placeholder="8-900-000-00-00" />
+                          </div>
+                          <div>
+                            <Label htmlFor="order-address">Адрес доставки</Label>
+                            <Textarea id="order-address" value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} placeholder="Город, улица, дом, квартира" rows={2} />
+                          </div>
+                          <Button className="w-full" size="lg" onClick={() => handleOrderSubmit('whatsapp')}>
+                            <Icon name="MessageCircle" size={16} className="mr-2" />
+                            Заказать через WhatsApp
+                          </Button>
+                          <Button className="w-full" size="lg" variant="secondary" onClick={() => handleOrderSubmit('sms')}>
+                            <Icon name="MessageSquare" size={16} className="mr-2" />
+                            Заказать через SMS
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="space-y-2">
+                          <p className="text-sm text-center text-muted-foreground">Для оформления заказа позвоните оператору</p>
+                          <Button className="w-full" size="lg" asChild>
+                            <a href="tel:+79025553558">
+                              <Icon name="Phone" size={16} className="mr-2" />
+                              Позвонить оператору 8-902-555-35-58
+                            </a>
+                          </Button>
+                        </div>
+                      )}
                       <p className="text-xs text-muted-foreground text-center mt-2">🚚 Бесплатная доставка в квартиру</p>
                     </div>
                   </>
