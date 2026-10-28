@@ -8,7 +8,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
-import InputMask from 'react-input-mask';
 import {
   Accordion,
   AccordionContent,
@@ -69,12 +68,8 @@ const faqItems = [
 ];
 
 export default function Index() {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    try {
-      const saved = localStorage.getItem('cart');
-      return saved ? JSON.parse(saved) : [];
-    } catch { return []; }
-  });
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [storageLoaded, setStorageLoaded] = useState(false);
   const [selectedWeights, setSelectedWeights] = useState<Record<string, number>>({});
   const [activeSection, setActiveSection] = useState('home');
   const [customerName, setCustomerName] = useState('');
@@ -82,18 +77,24 @@ export default function Index() {
   const [customerAddress, setCustomerAddress] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState<'sms' | 'whatsapp'>('sms');
-  const [pendingOrder, setPendingOrder] = useState<{ method: 'sms' | 'whatsapp'; text: string } | null>(() => {
-    try {
-      const saved = localStorage.getItem('pendingOrder');
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
-  });
+  const [pendingOrder, setPendingOrder] = useState<{ method: 'sms' | 'whatsapp'; text: string } | null>(null);
 
   useEffect(() => {
+    try {
+      const saved = localStorage.getItem('cart');
+      if (saved) setCart(JSON.parse(saved));
+    } catch { /* ignore */ }
+    try {
+      const savedOrder = localStorage.getItem('pendingOrder');
+      if (savedOrder) setPendingOrder(JSON.parse(savedOrder));
+    } catch { /* ignore */ }
+    setStorageLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!storageLoaded) return;
     localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+  }, [cart, storageLoaded]);
 
   const addToCart = (product: Product) => {
     const weight = selectedWeights[product.id] || product.weights[0];
